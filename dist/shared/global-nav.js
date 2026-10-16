@@ -6,8 +6,18 @@
   const scriptUrl = new URL(script.src, location.href);
   const siteRoot = new URL("../", scriptUrl);
   const current = new URL(location.href);
-  let relativePath = decodeURIComponent(current.pathname.slice(siteRoot.pathname.length)).replace(/^\/+/, "");
-  if (relativePath && relativePath.endsWith("/")) relativePath += "index.html";
+  function normalizeRoute(path) {
+    let normalized = decodeURIComponent(path).replace(/^\/+/, "");
+    if (!normalized) return normalized;
+    if (normalized.endsWith("/")) return `${normalized}index.html`;
+    const leaf = normalized.split("/").pop();
+    if (!leaf.includes(".")) {
+      normalized += /^(?:index|index-tc|index-en|yt3)$/.test(leaf) ? ".html" : "/index.html";
+    }
+    return normalized;
+  }
+
+  const relativePath = normalizeRoute(current.pathname.slice(siteRoot.pathname.length));
   const isHome = !relativePath || /^index(?:-tc|-en)?\.html$/.test(relativePath);
   const categoryMatch = relativePath.match(/^(0[1-6]_[^/]+)\/(?:index(?:-tc|-en)?\.html)?$/);
   const explicitEnglish = /(?:^|\/)index-en\.html$/.test(relativePath) || current.searchParams.get("lang") === "en";
@@ -80,24 +90,47 @@
     const match = relativePath.match(/^(0[1-6]_[^/]+)\/yt3\.html$/);
     const content = match && yt3Catalog[match[1]];
     if (!content || language !== "tc") return;
+    const category = categoryNames[match[1]];
     const head = document.querySelector(".yt3-head");
     if (!head) return;
     document.documentElement.lang = "zh-Hant";
+    const versionTag = document.title.match(/\bV\d+\b.*$/)?.[0];
+    document.title = `NOBEL2026 ${category} YT3 TC${versionTag ? ` ${versionTag}` : ""}`;
+    const navLinks = [...document.querySelectorAll("header.site-nav nav a")];
+    if (navLinks[0]) navLinks[0].textContent = category;
+    navLinks.slice(1).forEach((link) => {
+      link.textContent = link.getAttribute("href")?.includes("karl-deisseroth") ? "3D 實驗室" : "全部獎項";
+    });
+    const navLabel = document.querySelector("header.site-nav > b");
+    if (navLabel) navLabel.textContent = `YT3 · ${category}`;
+    const kicker = head.querySelector(".kicker");
     const h1 = head.querySelector("h1");
     const intro = head.querySelector(":scope > p");
+    if (kicker) kicker.textContent = "三路影片複習";
     if (h1) h1.textContent = content[0];
     if (intro) intro.textContent = content[1];
     const cards = [...document.querySelectorAll(".video-card")];
     cards.forEach((card, index) => {
+      const thumbnail = card.querySelector(".video-cover img");
+      const coverLabel = card.querySelector(".video-cover span");
       const small = card.querySelector(".video-body small");
       const title = card.querySelector("h2");
       const copy = card.querySelector(".video-body p");
       const action = card.querySelector(".video-actions a");
+      if (thumbnail) thumbnail.alt = `${category}${["正式公布", "主題解說", "得主訪談"][index]}的 YouTube 縮圖`;
+      if (coverLabel) coverLabel.textContent = ["正式公布", "機制／主題", "得主訪談"][index];
       if (small) small.textContent = ["正式公布", "主題解說", "得主訪談"][index];
       if (title) title.textContent = content[2][index][0];
       if (copy) copy.textContent = content[2][index][1];
       if (action) action.textContent = "開啟 YouTube ↗";
     });
+    const footer = document.querySelector(".site-footer");
+    if (footer) {
+      const brand = footer.querySelector("b");
+      const creator = footer.querySelector("span");
+      if (brand) brand.textContent = `NOBEL2026 · ${category} YT3`;
+      if (creator) creator.textContent = "Kevin 製作";
+    }
   }
 
   function addProfileGuide(header) {

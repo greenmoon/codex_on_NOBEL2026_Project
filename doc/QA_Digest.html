@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>QA Digest Bilingual V34 2026-10-17 06:46</title>
+  <title>QA Digest Bilingual V35 2026-10-17 06:55</title>
   <style>
     :root { color-scheme: light; font-family: system-ui, sans-serif; }
     body { max-width: 980px; margin: 0 auto; padding: 2rem 1rem; line-height: 1.6; color: #101828; background: #ffffff; }
@@ -31,6 +31,19 @@
     <p class="language-key"><span>EN · English</span><span lang="zh-Hant">繁中 · Traditional Chinese</span></p>
   </header>
   <main>
+    <details>
+      <summary><span class="timetag">(035 2026-10-17 06:55)</span> <span class="question-label">Q:</span> Why did a TC-selected YT3 page still show English, and is the mismatch fixed for all six awards? / <span lang="zh-Hant">為何 YT3 已選繁中仍顯示英文，六個獎項是否都已修正？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>Why could the language control and review buttons show Traditional Chinese while the main YT3 content remained English on the published clean URL?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>The published route omitted the <code>.html</code> suffix, so the global language state changed but the YT3 translation catalog did not match the page path. The shared route normalizer now canonicalizes extensionless category, YT3, Demo and laureate paths. All six YT3 pages translate the header navigation, kicker, title, introduction, cover roles, card labels, titles, descriptions, YouTube actions, review controls, progress and footer when TC is selected; explicit EN selection preserves the English originals.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>為何正式網站的語言選擇器與複習按鈕已顯示繁中，主要 YT3 內容卻仍維持英文？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>正式網址省略了 <code>.html</code>，因此全域語言狀態雖已切換，YT3 翻譯目錄卻沒有命中頁面路徑。共用路由正規化器現在會統一無副檔名的獎項、YT3、Demo 與得主頁路徑。六個 YT3 頁面在選取繁中時，都會同步翻譯頁首導覽、眉題、主標、簡介、封面角色、卡片標籤、標題、說明、YouTube 動作、複習控制、進度與頁尾；明確選取 EN 時則保留原始英文。</dd>
+      </dl>
+    </details>
     <details>
       <summary><span class="timetag">(034 2026-10-17 06:46)</span> <span class="question-label">Q:</span> Do all subpages and deep pages now share HOME and EN／繁中 controls with Traditional Chinese as the default? / <span lang="zh-Hant">所有子頁與深度頁現在是否共用 HOME、EN／繁中控制，並以繁中為預設？</span></summary>
       <dl>
@@ -474,6 +487,6 @@
       </dl>
     </details>
   </main>
-  <footer>QA Digest Bilingual V34 2026-10-17 06:46 · 英文／繁中</footer>
+  <footer>QA Digest Bilingual V35 2026-10-17 06:55 · 英文／繁中</footer>
 </body>
 </html>
