@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>QA Digest Bilingual V27 2026-10-16 22:29</title>
+  <title>QA Digest Bilingual V28 2026-10-16 22:42</title>
   <style>
     :root { color-scheme: light; font-family: system-ui, sans-serif; }
     body { max-width: 980px; margin: 0 auto; padding: 2rem 1rem; line-height: 1.6; color: #101828; background: #ffffff; }
@@ -31,6 +31,19 @@
     <p class="language-key"><span>EN · English</span><span lang="zh-Hant">繁中 · Traditional Chinese</span></p>
   </header>
   <main>
+    <details>
+      <summary><span class="timetag">(028 2026-10-16 22:42)</span> <span class="question-label">Q:</span> Can the Medicine page show its optogenetics math model in the same first-screen layout? / <span lang="zh-Hant">醫學獎頁面能否在同一個首屏版面顯示光遺傳學數學模型？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How should the Medicine hero explain the path from light input to neural firing without crowding the laureate citation or weakening phone readability?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Place a compact teaching-model card beneath the laureate citation in the hero's right column. The card presents the IPO chain—light intensity, opsin expression and pulse duration → channel opening → membrane-voltage change and spike—followed by four readable equations for channel probability, photocurrent, membrane dynamics and firing threshold. It explicitly states that the equations are a causal teaching model rather than cell-specific calibration. English and Traditional Chinese pages share the same structure. Browser QA confirmed the complete 438 px model card beside the title at a 1280 px desktop viewport and an adjacent single-column model at a 451 px phone content width, with all formula and control bounds inside the viewport, no horizontal overflow, and no console warnings or errors. Static QA found zero broken local references across 37 HTML files.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>醫學獎首頁應如何解釋從光輸入到神經放電的路徑，同時不擠壓得主獲獎理由並保持手機可讀性？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>在首頁右欄的得主獲獎理由下方加入精簡教學模型卡，以「光強度、視蛋白表現量與脈衝時間 → 通道開啟 → 膜電位改變與放電」呈現 IPO 因果鏈，再用四行清楚公式解釋通道開啟率、光電流、膜電位動態與放電閾值。卡片明確標示這是因果教學模型，而非特定細胞的實驗校正。英文與繁中頁共用相同結構。瀏覽器 QA 已確認 1280 px 桌面寬度時，完整 438 px 模型卡與標題並排；451 px 手機內容寬度時則緊鄰成單欄排列，全部公式與控制邊界均在畫面內，沒有水平溢出，也沒有主控台警告或錯誤。靜態 QA 檢查 37 個 HTML 檔案，沒有失效的本機引用。</dd>
+      </dl>
+    </details>
     <details>
       <summary><span class="timetag">(027 2026-10-16 22:29)</span> <span class="question-label">Q:</span> Can the award map show clear laureate photos with Traditional Chinese as the default? / <span lang="zh-Hant">獎項地圖能否加入清楚的得主照片，並以繁中作為預設？</span></summary>
       <dl>
@@ -383,6 +396,6 @@
       </dl>
     </details>
   </main>
-  <footer>QA Digest Bilingual V27 2026-10-16 22:29 · 英文／繁中</footer>
+  <footer>QA Digest Bilingual V28 2026-10-16 22:42 · 英文／繁中</footer>
 </body>
 </html>
