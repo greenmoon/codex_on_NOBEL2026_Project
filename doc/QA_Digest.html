@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>QA Digest Bilingual V33 2026-10-17 06:28</title>
+  <title>QA Digest Bilingual V34 2026-10-17 06:46</title>
   <style>
     :root { color-scheme: light; font-family: system-ui, sans-serif; }
     body { max-width: 980px; margin: 0 auto; padding: 2rem 1rem; line-height: 1.6; color: #101828; background: #ffffff; }
@@ -31,6 +31,19 @@
     <p class="language-key"><span>EN · English</span><span lang="zh-Hant">繁中 · Traditional Chinese</span></p>
   </header>
   <main>
+    <details>
+      <summary><span class="timetag">(034 2026-10-17 06:46)</span> <span class="question-label">Q:</span> Do all subpages and deep pages now share HOME and EN／繁中 controls with Traditional Chinese as the default? / <span lang="zh-Hant">所有子頁與深度頁現在是否共用 HOME、EN／繁中控制，並以繁中為預設？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How can navigation stay consistent across category, Demo, YT3 and laureate-profile layers while keeping release history managed from HOME?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>A shared navigation layer now gives all 34 non-HOME pages the same right-side HOME link and EN／繁中 selector. Unqualified category routes redirect to their Traditional Chinese overview, explicit English routes remain available, YT3 pages receive Traditional Chinese card copy by default, bilingual demos keep their dual-language content, and ten laureate deep pages receive a concise Traditional Chinese guide before the original research details. HOME now contains the single visible production-version history. Static QA confirms navigation-loader coverage on 34 of 34 subpages, 12 category language routes, three HOME version sections, valid JavaScript, and zero broken local references across 37 HTML files.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>如何讓獎項總覽、Demo、YT3 與得主深度頁維持一致導覽，同時由 HOME 集中管理正式版本紀錄？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>新的共用導覽層讓 34 個非 HOME 頁面都在右側顯示相同的 HOME 與 EN／繁中選擇器。未指定語言的獎項路徑會導向繁中總覽，英文路徑仍可明確選取；YT3 卡片預設顯示繁中說明，雙語 Demo 保留原有雙語內容，十個得主深度頁則在原始研究內容前加入精要繁中導讀。HOME 現在是正式版本紀錄的單一可見入口。靜態 QA 確認 34／34 個子頁都有導覽載入、12 個獎項語言路徑完整、三個 HOME 檔案都有版本區，JavaScript 語法有效，且 37 個 HTML 檔案沒有失效的本機引用。</dd>
+      </dl>
+    </details>
     <details>
       <summary><span class="timetag">(033 2026-10-17 06:28)</span> <span class="question-label">Q:</span> Do all six award YT3 pages now show a corresponding YouTube thumbnail for each review route? / <span lang="zh-Hant">六個獎項的 YT3 頁面現在是否都為每條複習路徑顯示對應的 YouTube 縮圖？</span></summary>
       <dl>
@@ -461,6 +474,6 @@
       </dl>
     </details>
   </main>
-  <footer>QA Digest Bilingual V33 2026-10-17 06:28 · 英文／繁中</footer>
+  <footer>QA Digest Bilingual V34 2026-10-17 06:46 · 英文／繁中</footer>
 </body>
 </html>

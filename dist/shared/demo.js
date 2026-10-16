@@ -26,3 +26,4 @@
   function wireButton(controller,id='toggleMotion'){const button=document.getElementById(id);if(!button)return;const render=()=>{button.textContent=controller.running?'Pause 暫停':'Play 播放';button.dataset.motion=controller.running?'running':'paused'};render();button.addEventListener('click',()=>{controller.toggle();render()})}
   window.DemoKit={animator,range,choices,clear,metric,wireButton,clamp:(v,a,b)=>Math.max(a,Math.min(b,v)),lerp:(a,b,t)=>a+(b-a)*t};
 })();
+(()=>{const source=document.currentScript?.src;if(!source||window.__nobelGlobalNavRequested)return;window.__nobelGlobalNavRequested=true;const script=document.createElement('script');script.src=new URL('global-nav.js',source);document.head.append(script);})();

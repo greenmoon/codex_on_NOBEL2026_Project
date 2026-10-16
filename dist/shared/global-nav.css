@@ -1,0 +1,133 @@
+.global-nav-tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  white-space: nowrap;
+  font-family: Inter, "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
+}
+
+.global-home-link {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 13px;
+  border: 1px solid #c8c4ba;
+  border-radius: 999px;
+  background: #fff;
+  color: #101218;
+  box-shadow: 0 4px 12px #1012180a;
+  font: 850 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-decoration: none;
+}
+
+.global-home-link b { font-size: 14px; }
+
+.global-language-switch {
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  border: 1px solid #c8c4ba;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 4px 12px #1012180a;
+}
+
+.global-language-switch a {
+  min-width: 48px;
+  min-height: 34px;
+  display: grid;
+  place-items: center;
+  padding: 7px 10px;
+  border-radius: 999px;
+  color: #69717e;
+  font: 850 11px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-decoration: none;
+}
+
+.global-language-switch a[aria-current="page"] {
+  background: #101218;
+  color: #fff;
+}
+
+.global-home-link:hover,
+.global-language-switch a:hover { color: #101218; }
+
+.global-home-link:focus-visible,
+.global-language-switch a:focus-visible {
+  outline: 2px solid #2356ff;
+  outline-offset: 2px;
+}
+
+.tc-guide {
+  padding: 18px clamp(20px, 7vw, 110px);
+  border-bottom: 1px solid #d8d4ca;
+  background: linear-gradient(115deg, color-mix(in srgb, var(--accent, #2356ff) 12%, #fff), #fff 70%);
+}
+
+.tc-guide-inner {
+  max-width: 1180px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: minmax(170px, .36fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.tc-guide small {
+  color: var(--accent, #2356ff);
+  font: 900 9px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .14em;
+}
+
+.tc-guide h2 {
+  margin: 7px 0 0;
+  color: #101218;
+  font: 650 clamp(24px, 3vw, 38px)/1.12 "Noto Serif TC", "Songti TC", Georgia, serif;
+}
+
+.tc-guide p {
+  margin: 0;
+  color: #4d5562;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.tc-guide a {
+  display: inline-flex;
+  margin-top: 10px;
+  color: var(--accent, #2356ff);
+  font-size: 11px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .site-nav nav,
+  .site-nav > b,
+  .profile-nav nav,
+  .profile-nav > small,
+  .topbar nav,
+  .topbar > .version { display: none !important; }
+
+  .site-nav,
+  .profile-nav,
+  .topbar { gap: 10px !important; }
+
+  .global-nav-tools { margin-left: auto; gap: 7px; }
+}
+
+@media (max-width: 620px) {
+  .global-home-link { min-height: 40px; padding: 7px 10px; }
+  .global-language-switch a { min-width: 45px; min-height: 36px; padding: 6px 8px; }
+  .tc-guide { padding: 18px 16px; }
+  .tc-guide-inner { grid-template-columns: 1fr; gap: 10px; }
+  .tc-guide h2 { font-size: 27px; }
+}
+
+@media (max-width: 370px) {
+  .global-home-link { gap: 4px; padding-inline: 8px; }
+  .global-home-link b { display: none; }
+  .global-language-switch a { min-width: 42px; }
+}
