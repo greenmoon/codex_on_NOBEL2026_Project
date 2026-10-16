@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive 3D optogenetics IPO simulator inspired by Karl Deisseroth's Nobel-winning research.">
+  <title>NOBEL2026 Optogenetics IPO Lab V03 2026.10.09 20:02</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a href="../index.html" style="position:fixed;left:18px;bottom:18px;z-index:50;background:#fff;color:#111;padding:10px 14px;border:1px solid #d9d6ce;border-radius:999px;font:700 11px system-ui;text-decoration:none;box-shadow:0 8px 24px #0002">← Medicine overview</a>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Optogenetics IPO Lab home">
+      <span class="brand-mark">λ</span>
+      <span>NOBEL<span>2026</span></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#lab">3D Lab</a>
+      <a href="#model">Math</a>
+      <a href="#story">Story</a>
+    </nav>
+    <span class="version">V03 · 2026.10.09 20:02</span>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">THE 2026 NOBEL PRIZE · PHYSIOLOGY OR MEDICINE</p>
+        <h1>Light in.<br><em>Neural action</em> out.</h1>
+        <p class="lede">Explore how Karl Deisseroth helped turn microbial light-sensitive proteins into a precise way to test how defined cells shape circuits and behavior.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#lab">Enter the 3D lab <span>↓</span></a>
+          <a class="button ghost" href="#story">Why it won the Nobel</a>
+        </div>
+      </div>
+      <figure class="hero-photo">
+        <img src="portrait.jpg" alt="Portrait of Karl Deisseroth">
+        <figcaption>Photo: <a href="https://med.stanford.edu/news/all-news/2021/09/karl-deisseroth-lasker-award.html" target="_blank" rel="noreferrer">Stanford Medicine</a></figcaption>
+      </figure>
+    </section>
+
+    <section class="award-strip" aria-label="Nobel award summary">
+      <div><span>LAUREATES</span><b>Karl Deisseroth · Peter Hegemann · Georg Nagel</b></div>
+      <div><span>DISCOVERY</span><b>Light-gated ion channels &amp; optogenetics</b></div>
+      <div><span>YEAR</span><b>2026</b></div>
+    </section>
+
+    <section class="lab" id="lab">
+      <div class="section-head">
+        <div><p class="eyebrow">INTERACTIVE EXPERIMENT</p><h2>The optogenetic IPO loop</h2></div>
+        <p>Adjust the inputs. The model converts light and opsin properties into membrane drive, then estimates firing-rate change across a simulated 3D network.</p>
+      </div>
+
+      <div class="lab-grid">
+        <aside class="control-panel" aria-label="Simulation inputs">
+          <div class="panel-title"><span>01</span><div><small>INPUT</small><h3>Set the stimulus</h3></div></div>
+          <label class="select-label" for="opsin">Opsin mode</label>
+          <select id="opsin">
+            <option value="chr2">ChR2 · excitation</option>
+            <option value="enphr">eNpHR3.0 · inhibition</option>
+          </select>
+          <div id="controls"></div>
+          <div class="presets" aria-label="Simulation presets">
+            <button data-preset="sub">Subthreshold</button>
+            <button class="active" data-preset="precise">Precise pulse</button>
+            <button data-preset="strong">Strong drive</button>
+          </div>
+          <p class="safety">Educational model—not a biological protocol or clinical tool.</p>
+        </aside>
+
+        <div class="stage-panel">
+          <div class="stage-toolbar">
+            <div><span class="live-dot"></span> LIVE MODEL</div>
+            <div class="stage-buttons"><button id="toggle" aria-label="Pause animation">Pause</button><button id="resetView">Reset view</button></div>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="neuralCanvas" aria-label="Animated 3D neural network responding to light"></canvas>
+            <div class="light-source"><span></span><b id="beamLabel">470 nm</b></div>
+            <div class="drag-hint">Drag to rotate · scroll to zoom</div>
+          </div>
+          <div class="stage-legend"><span><i class="dot selected"></i> Opsin+ neuron</span><span><i class="dot pulse"></i> Action potential</span><span><i class="dot base"></i> Network cell</span></div>
+        </div>
+
+        <aside class="output-panel" aria-label="Simulation outputs">
+          <div class="panel-title"><span>03</span><div><small>OUTPUT</small><h3>Read the circuit</h3></div></div>
+          <div class="score-card">
+            <div class="score-ring" id="scoreRing"><strong id="activation">0</strong><small>%</small></div>
+            <p>Opsin activation</p>
+          </div>
+          <div class="metric"><div><span>Membrane drive</span><b id="drive">0.00</b></div><div class="track"><i id="driveBar"></i></div></div>
+          <div class="metric"><div><span>Δ firing rate</span><b id="firing">+0 Hz</b></div><div class="track"><i id="firingBar"></i></div></div>
+          <div class="metric"><div><span>Network response</span><b id="network">quiet</b></div><div class="track"><i id="networkBar"></i></div></div>
+          <div class="causal-card"><small>INTERPRETATION</small><p id="interpretation">Matched blue light opens ChR2 channels, depolarizing selected neurons.</p></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="model" id="model">
+      <div class="section-head inverse"><div><p class="eyebrow">THE MATH MODEL</p><h2>From photons to firing</h2></div><p>A compact phenomenological model—not a replacement for ion-channel kinetics or experimental calibration.</p></div>
+      <div class="equation-card">
+        <div class="ipo-step input"><span>I</span><div><small>INPUT</small><b>λ, P, d, f, g</b><p>wavelength, irradiance, duty cycle, frequency, expression</p></div></div>
+        <div class="operator">→</div>
+        <div class="ipo-step process"><span>P</span><div><small>PROCESS</small><b>D = s · η(λ) · Pₙ · d · g · h(f)</b><p>signed, normalized optical drive</p></div></div>
+        <div class="operator">→</div>
+        <div class="ipo-step output"><span>O</span><div><small>OUTPUT</small><b>ΔF = s · F<sub>max</sub> · σ(k(D−θ))</b><p>estimated firing-rate change</p></div></div>
+      </div>
+      <div class="formula-grid">
+        <article><b>η(λ)</b><p>Spectral match</p><code>exp[−½((λ−λ₀)/σλ)²]</code></article>
+        <article><b>d</b><p>Duty fraction</p><code>pulse width × frequency</code></article>
+        <article><b>h(f)</b><p>Frequency gain</p><code>0.7 + 0.3 · min(f,50)/50</code></article>
+        <article><b>σ(x)</b><p>Saturating response</p><code>1 / (1 + e⁻ˣ)</code></article>
+        <article><b>s</b><p>Opsin direction</p><code>+1 excitation · −1 inhibition</code></article>
+      </div>
+      <p class="model-note">The demo normalizes terms for visualization. Real responses depend on cell type, construct, expression, scattering, heating, geometry, and experimental context.</p>
+    </section>
+
+    <section class="story" id="story">
+      <div class="story-intro"><p class="eyebrow">DISCOVERY TO IMPACT</p><h2>A causal language for the brain</h2><p>Observation can show correlation. Optogenetic perturbation lets researchers ask whether a defined circuit element is necessary or sufficient for a behavior—with millisecond-scale control.</p></div>
+      <div class="timeline">
+        <article><span>01</span><small>DISCOVER</small><h3>Microbial photoreceptors</h3><p>Light-gated proteins convert photons into ion flow across a membrane.</p></article>
+        <article><span>02</span><small>ENGINEER</small><h3>Target selected cells</h3><p>Genetic targeting places an opsin in a chosen neural population.</p></article>
+        <article><span>03</span><small>PERTURB</small><h3>Deliver timed light</h3><p>Light activates or inhibits those cells with high temporal precision.</p></article>
+        <article><span>04</span><small>INFER</small><h3>Test causal function</h3><p>Measure circuit, physiological, or behavioral change to test a hypothesis.</p></article>
+      </div>
+      <div class="nobel-card">
+        <div class="medal" aria-hidden="true">N</div>
+        <div><p class="eyebrow">THE AWARD</p><h2>2026 Nobel Prize</h2><p>Deisseroth shared the prize with Peter Hegemann and Georg Nagel for discoveries concerning light-gated ion channels and optogenetics—linking foundational microbial protein research to a transformative neuroscience method.</p></div>
+      </div>
+    </section>
+
+    <section class="sources">
+      <h2>Explore the evidence</h2>
+      <div class="source-links">
+        <a href="https://med.stanford.edu/news/all-news/2026/10/deisseroth-nobel-prize.html" target="_blank" rel="noreferrer"><span>Stanford Medicine</span><b>2026 Nobel announcement ↗</b></a>
+        <a href="https://med.stanford.edu/news/all-news/2026/10/optogenetics-opsins-deisseroth-nobel-how-it-works.html" target="_blank" rel="noreferrer"><span>Stanford Medicine</span><b>How optogenetics works ↗</b></a>
+        <a href="https://dlab.stanford.edu/research" target="_blank" rel="noreferrer"><span>Deisseroth Lab</span><b>Research program ↗</b></a>
+      </div>
+    </section>
+  </main>
+
+  <footer><b>NOBEL2026 · Optogenetics IPO Lab</b><span>Created by Kevin · Educational visualization</span><span>V03 2026.10.09 20:02</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>

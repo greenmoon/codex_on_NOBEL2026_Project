@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Bilingual dynamic explanation of a simplified New Keynesian macroeconomic stabilisation model.">
+  <title>NOBEL2026 Economic Stabilisation Demo V03 2026.10.16 08:24</title>
+  <link rel="stylesheet" href="../../shared/base.css">
+  <link rel="stylesheet" href="../../shared/demo.css?v=20261016-0824">
+</head>
+<body style="--demo-accent:#ffb45c">
+  <header class="site-nav"><a class="logo" href="../../index-tc.html"><i>N</i> NOBEL<span>2026</span></a><nav><a class="demo-back" href="../index-tc.html">← 經濟學獎</a><a href="../index.html">EN overview</a></nav><b>DEMO 06 · ECONOMICS</b></header>
+  <main class="demo-shell">
+    <section class="demo-head"><div><p class="kicker">MACRO STABILISATION · 總體經濟穩定</p><h1>From household choices<br>to a steadier economy.</h1><p>調整需求衝擊、政策利率、可信度與價格僵固性，在同一畫面比較「沒有政策回應」與「穩定政策」的產出缺口路徑。</p></div><p class="demo-note">ILLUSTRATIVE MODEL · 教學模型<br>Not an empirical forecast · 非實證預測</p></section>
+    <section class="demo-lab">
+      <div class="demo-stage"><span class="stage-label">OUTPUT-GAP PATH · 產出缺口路徑</span><canvas id="economicsCanvas" role="img" aria-label="Animated comparison of output-gap paths with and without stabilisation policy"></canvas><div class="stage-legend"><span><i style="--legend:#77869b"></i>no response 無回應</span><span><i style="--legend:#ffb45c"></i>stabilised 穩定後</span><span><i style="--legend:#65dfa5"></i>target 目標</span></div></div>
+      <aside class="demo-controls"><h2>Input 輸入</h2><p class="sub">Shock × expectations × price setting × policy</p>
+        <div class="control"><label for="demandShock">Demand shock d 需求衝擊 <output id="demandShockValue"></output></label><input id="demandShock" type="range" min="-4" max="4" step="0.1" value="-2"><small>Range 範圍 −4.0…+4.0% of potential output</small></div>
+        <div class="control"><label for="policyRate">Policy-rate change Δi 政策利率變動 <output id="policyRateValue"></output></label><input id="policyRate" type="range" min="-3" max="3" step="0.1" value="-1.5"><small>Range 範圍 −3.0…+3.0 percentage points</small></div>
+        <div class="control"><label for="credibility">Credibility c 政策可信度 <output id="credibilityValue"></output></label><input id="credibility" type="range" min="0" max="100" step="1" value="70"><small>Range 範圍 0…100%</small></div>
+        <div class="control"><label for="stickiness">Price sensitivity κ 價格敏感度 <output id="stickinessValue"></output></label><input id="stickiness" type="range" min="0.05" max="0.40" step="0.01" value="0.18"><small>Teaching range 教學範圍 0.05…0.40</small></div>
+        <div class="action-row"><button class="primary" id="toggleMotion">Pause 暫停</button><button id="resetDemo">Replay 重播</button></div>
+      </aside>
+      <div class="demo-output"><article><small>OUTPUT GAP x · 產出缺口</small><strong id="gapOutput">−0.94%</strong><p>Peak after the policy response</p></article><article><small>INFLATION GAP π · 通膨缺口</small><strong id="inflationOutput">−0.41%</strong><p>Simplified price-setting response</p></article><article><small>STABILISATION · 穩定改善</small><strong id="gainOutput">51%</strong><p>Smaller joint deviation from target</p></article></div>
+      <div class="ipo-strip"><article><b>INPUT 輸入</b><h3>Choices, shocks, expectations</h3><p>需求衝擊、政策利率、政策可信度，以及企業調價敏感度。</p></article><article><b>PROCESS 處理</b><h3>Micro-founded dynamics</h3><p>家庭消費與企業定價的前瞻決策，轉化成產出缺口與通膨反應。</p></article><article><b>OUTPUT 輸出</b><h3>Compare stabilisation paths</h3><p>同框比較政策回應前後的波動幅度與回到目標的速度。</p></article></div>
+      <p class="formula"><code>Δiₑ = Δi(0.45 + 0.55c) · x = d − 0.85Δiₑ · π = κx + 0.12d</code><br>Normalized one-period teaching equations inspired by New Keynesian channels; coefficients are illustrative and must not be used for real-world forecasting.</p>
+    </section>
+  </main>
+  <footer class="site-footer demo-footer"><b>NOBEL2026 · Economic Sciences Demo</b><span>Same-frame policy lab · 同框政策實驗室</span><span>V03 2026.10.16 08:24</span></footer>
+  <script src="../../shared/demo.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

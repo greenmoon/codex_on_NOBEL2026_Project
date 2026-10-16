@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Interactive bilingual IceCube and Cherenkov-radiation educational simulation.">
+  <title>NOBEL2026 Physics IceCube Demo V03 2026.10.10 17:54</title>
+  <link rel="stylesheet" href="../../shared/base.css">
+  <link rel="stylesheet" href="../../shared/demo.css?v=20261010-1754">
+  <link rel="stylesheet" href="styles.css?v=20261010-1800">
+</head>
+<body style="--demo-accent:#72a6ff">
+  <header class="site-nav">
+    <a class="logo" href="../../index-tc.html"><i>N</i> NOBEL<span>2026</span></a>
+    <nav><a class="demo-back" href="../index-tc.html">← 物理學獎</a><a href="../index.html">EN overview</a></nav>
+    <b>DEMO 02 · PHYSICS</b>
+  </header>
+  <main class="demo-shell">
+    <section class="demo-head">
+      <div>
+        <p class="kicker">ICECUBE EVENT LAB · 冰立方事件</p>
+        <h1>See a cosmic<br>ghost.</h1>
+        <p>切換 2D 光錐與 3D 偵測器，觀察帶電次級粒子如何產生 Cherenkov 光，以及光子如何點亮 DOM。</p>
+      </div>
+      <p class="demo-note">NEUTRINO ≠ NEUTRON · 中微子不是中子<br>5,160 DOMs on 86 strings · 畫面以代表性陣列呈現。</p>
+    </section>
+
+    <section class="process-map" aria-labelledby="processTitle">
+      <div class="process-map-head">
+        <p>CHERENKOV PROCESS · 核心流程</p>
+        <h2 id="processTitle">From invisible neutrino to visible light<br><span>從看不見的中微子到可測量的光</span></h2>
+      </div>
+      <ol>
+        <li><b>1</b><strong>Neutrino interaction</strong><span>中微子發生弱交互作用</span></li>
+        <li><b>2</b><strong>Charged secondary</strong><span>產生高速帶電次級粒子</span></li>
+        <li><b>3</b><strong>Cherenkov cone</strong><span>超過冰中光速後形成光錐</span></li>
+        <li><b>4</b><strong>DOM timing + charge</strong><span>用抵達時間與光量重建事件</span></li>
+      </ol>
+    </section>
+
+    <section class="demo-lab">
+      <div class="demo-view-switch" aria-label="Demo view 演示視圖" data-choice="view">
+        <div><small>VIEW · 視圖</small><strong id="viewDescription">2D explains the threshold and 41° cone · 2D 解釋門檻與 41° 光錐</strong></div>
+        <div class="choice-row">
+          <button aria-pressed="true" data-value="cone">2D CONE 光錐</button>
+          <button aria-pressed="false" data-value="detector">3D DETECTOR 偵測器</button>
+        </div>
+      </div>
+
+      <div class="demo-stage">
+        <span class="stage-label" id="stageLabel">CHERENKOV GEOMETRY · 2D 光錐</span>
+        <canvas id="icecubeCanvas" role="img" aria-label="Animated 2D Cherenkov cone and 3D projected IceCube detector"></canvas>
+        <div class="stage-legend" id="stageLegend">
+          <span><i style="--legend:#f8fbff"></i>particle 粒子</span>
+          <span><i style="--legend:#72a6ff"></i>direct 直達光</span>
+          <span><i style="--legend:#78ef9e"></i>scattered 散射光</span>
+        </div>
+      </div>
+
+      <aside class="demo-controls">
+        <h2>Input 輸入</h2>
+        <p class="sub" id="controlSubtitle">Change the threshold and cone · 改變門檻與光錐</p>
+
+        <div class="control-group" data-controls="cone">
+          <div class="control">
+            <label for="beta">Particle speed 粒子速度 β <output id="betaValue"></output></label>
+            <input id="beta" type="range" min="0.700" max="0.999" step="0.001" value="0.999">
+            <small>0.700–0.999 · 跨越 Cherenkov 門檻</small>
+          </div>
+          <div class="control">
+            <label for="refractiveIndex">Refractive index 折射率 n <output id="refractiveIndexValue"></output></label>
+            <input id="refractiveIndex" type="range" min="1.20" max="1.40" step="0.01" value="1.32">
+            <small>1.20–1.40 · ice reference 冰的參考值 ≈ 1.32</small>
+          </div>
+          <div class="control">
+            <label for="scatteringLength">Scattering length 散射長度 λ<sub>s</sub> <output id="scatteringLengthValue"></output></label>
+            <input id="scatteringLength" type="range" min="10" max="80" step="1" value="35">
+            <small>10–80 m · illustrative teaching range 教學模型</small>
+          </div>
+          <div class="control">
+            <label for="absorptionLength">Absorption length 吸收長度 λ<sub>a</sub> <output id="absorptionLengthValue"></output></label>
+            <input id="absorptionLength" type="range" min="50" max="250" step="5" value="100">
+            <small>50–250 m · illustrative teaching range 教學模型</small>
+          </div>
+          <div class="control">
+            <label>Quick states 快速狀態</label>
+            <div class="choice-row preset-row"><button type="button" id="belowThreshold">BELOW THRESHOLD 低於門檻</button><button type="button" id="iceDefault">ICE DEFAULT 冰參考</button></div>
+          </div>
+        </div>
+
+        <div class="control-group" data-controls="detector" hidden>
+          <div class="control">
+            <label>Event topology 事件形狀</label>
+            <div class="choice-row" data-choice="topology"><button aria-pressed="true" data-value="track">TRACK 軌跡</button><button aria-pressed="false" data-value="cascade">CASCADE 簇射</button></div>
+          </div>
+          <div class="control">
+            <label for="energy">Neutrino energy 中微子能量 <output id="energyValue"></output></label>
+            <input id="energy" type="range" min="1.7" max="7" step="0.1" value="5">
+            <small>50 GeV–10 PeV · logarithmic 對數尺度</small>
+          </div>
+          <div class="control">
+            <label for="zenith">Zenith angle 天頂角 <output id="zenithValue"></output></label>
+            <input id="zenith" type="range" min="0" max="180" value="120">
+            <small>0°–180° · down-going to up-going 向下至向上</small>
+          </div>
+          <div class="control">
+            <label for="depth">Interaction depth 碰撞深度 <output id="depthValue"></output></label>
+            <input id="depth" type="range" min="1450" max="2450" value="2000">
+            <small>1,450–2,450 m · instrumented ice 冰內偵測區</small>
+          </div>
+          <div class="control">
+            <label for="clarity">Ice clarity 冰層清晰度 <output id="clarityValue"></output></label>
+            <input id="clarity" type="range" min="50" max="150" value="100">
+            <small>0.50–1.50× · relative teaching factor 相對教學因子</small>
+          </div>
+          <div class="control">
+            <label for="threshold">DOM threshold 感測門檻 <output id="thresholdValue"></output></label>
+            <input id="threshold" type="range" min="25" max="500" value="100">
+            <small>0.25–5.00 PE · photomultiplier threshold 光電門檻</small>
+          </div>
+        </div>
+
+        <div class="action-row"><button class="primary" id="toggleMotion">Pause 暫停</button><button id="resetDemo">Replay 重播</button></div>
+      </aside>
+
+      <div class="threshold-banner" id="thresholdBanner" aria-live="polite">
+        <div><small>THRESHOLD · 門檻</small><strong id="thresholdStatus">CHERENKOV ON · 產生光錐</strong></div>
+        <code id="thresholdEquation">βn = 1.319 &gt; 1</code>
+      </div>
+
+      <div class="demo-output" data-output="cone">
+        <article><small>LIGHT SPEED IN ICE · 冰中光速</small><strong id="iceLightSpeed">0.758c</strong><p><code>c/n</code> 不是真空光速</p></article>
+        <article><small>CONE ANGLE · 光錐角</small><strong id="coneAngle">40.7°</strong><p><code>θᴄ = acos[1/(βn)]</code></p></article>
+        <article><small>100 m SURVIVAL · 光子存活率</small><strong id="photonSurvival">36.8%</strong><p><code>P = exp(−d/λₐ)</code></p></article>
+      </div>
+
+      <div class="demo-output" data-output="detector" hidden>
+        <article><small>HIT DOMs · 命中感測器</small><strong id="hitDOMs">124</strong><p>代表性命中數，按 5,160 DOM 規模估算</p></article>
+        <article><small>TOTAL LIGHT · 總光量</small><strong id="totalPE">4.2k PE</strong><p>簡化光電子總量</p></article>
+        <article><small>ANGULAR ERROR · 方向誤差</small><strong id="angularError">1.2°</strong><p>軌跡通常比簇射更容易定向</p></article>
+      </div>
+
+      <div class="ipo-strip">
+        <article><b>INPUT 輸入</b><h3>Cosmic neutrino</h3><p>能量、方向、粒子速度與冰層光學性質。</p></article>
+        <article><b>PROCESS 處理</b><h3>Cherenkov photons</h3><p>高速帶電次級粒子使冰介質形成光錐；光子隨後散射或被吸收。</p></article>
+        <article><b>OUTPUT 輸出</b><h3>Reconstructed event</h3><p>依 DOM 光量與抵達時間重建方向、能量與事件形態。</p></article>
+      </div>
+      <p class="formula"><code>βn &gt; 1 ⇒ cos θᴄ = 1/(βn)</code> · 散射與吸收滑桿為概念教學範圍，真實冰層性質會隨深度、波長與方向而變。</p>
+    </section>
+  </main>
+  <footer class="site-footer demo-footer"><b>NOBEL2026 · Physics IceCube Demo</b><span>2D Cherenkov + 3D detector · 雙視圖教學模型</span><span>V03 2026.10.10 17:54</span></footer>
+  <script src="../../shared/demo.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

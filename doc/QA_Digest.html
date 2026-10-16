@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QA Digest Bilingual V25 2026-10-16 09:06</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; }
+    body { max-width: 980px; margin: 0 auto; padding: 2rem 1rem; line-height: 1.6; color: #101828; background: #ffffff; }
+    header, footer { color: #667085; }
+    details { border: 1px solid #98a2b3; border-radius: 0.6rem; margin: 1rem 0; padding: 0.8rem 1rem; }
+    summary { cursor: pointer; font-weight: 700; }
+    dt { font-weight: 700; margin-top: 0.7rem; }
+    dd { margin-left: 0; }
+    .timetag { color: #64748b; }
+    .question-label { color: #2563eb; }
+    .answer-label { color: #15803d; }
+    .done-label { color: #15803d; font-weight: 700; }
+    .next-label { color: #c2410c; font-weight: 700; }
+    .language-key { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .language-key span { padding: 0.25rem 0.65rem; border: 1px solid #cbd5e1; border-radius: 999px; color: #475569; font-size: 0.78rem; font-weight: 700; }
+    .tc-line { margin-top: 0.45rem; padding-left: 0.8rem; border-left: 3px solid #dbeafe; }
+    .tc-label { font-weight: 800; color: #475569; }
+    summary [lang="zh-Hant"] { color: #475569; font-weight: 650; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>QA Digest</h1>
+    <p>NOBEL2026 — Question and answer progress record · 問答進度紀錄</p>
+    <p class="language-key"><span>EN · English</span><span lang="zh-Hant">繁中 · Traditional Chinese</span></p>
+  </header>
+  <main>
+    <details>
+      <summary><span class="timetag">(025 2026-10-16 09:06)</span> <span class="question-label">Q:</span> Can readers select English or Traditional Chinese while keeping English as the default? / <span lang="zh-Hant">讀者是否可以選擇英文或繁體中文，同時維持英文為預設？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How should the global NOBEL2026 site expose language selection on desktop and iPhone without changing the default landing route?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Keep <code>index.html</code> as the English default and place a visible EN / 繁中 segmented selector in the shared header. The selected language is shown with a dark active state, the alternate language remains clickable, and the control stays visible at iPhone width even when the main navigation collapses. Each award overview retains its paired English and Traditional Chinese route. Local browser QA confirmed English at the root, two-way switching on the hub and category pages, correct active states, zero horizontal overflow, and no console warnings or errors.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>全球 NOBEL2026 網站應如何在桌面與 iPhone 顯示語言選擇，同時不改變預設首頁路徑？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>維持 <code>index.html</code> 為英文預設首頁，並在共用頁首放置清楚可見的 EN／繁中分段選擇器。作用中的語言使用深色狀態，另一語言可直接點選；即使主要導覽在 iPhone 寬度收合，語言控制仍保持可見。每個獎項總覽也保留成對的英文與繁中路徑。本機瀏覽器 QA 已確認根目錄預設英文、總頁與獎項頁可雙向切換、作用狀態正確、沒有水平溢出，且主控台無警告或錯誤。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(024 2026-10-16 08:24)</span> <span class="question-label">Q:</span> Did any newly released 2026 Nobel laureates require a site update? / <span lang="zh-Hant">2026 年諾貝爾獎是否有新公布得主需要更新網站？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>Which local category was still pending after comparison with the official 2026 Nobel Prize data, and what needed to change?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Only Economic Sciences was stale. Official data confirms Robert E. Hall and Michael Woodford received the 2026 prize “for microeconomic foundations of macroeconomic stabilisation”; the other five local categories already matched the official laureate list. The English and Traditional Chinese hubs now show 6 / 6 announced, the economics pages show the official citation and both laureates, two portrait profiles and a persistent YT3 page were added, and the former evidence gate became an autoplaying same-frame stabilisation demo. Static QA found zero broken local references across 36 HTML files. Browser QA confirmed desktop and iPhone-width layouts without horizontal overflow, both profile images and Study Lens interactions, YT3 persistence, immediate demo autoplay, Pause control, and live multi-slider output updates with no console warnings or errors.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>比對 2026 年諾貝爾獎官方資料後，哪一個本機分類仍停留在待公布狀態，應如何更新？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>只有經濟學獎資料已過時。官方資料確認 Robert E. Hall 與 Michael Woodford 因「對總體經濟穩定之微觀經濟基礎的貢獻」獲得 2026 年獎項；其他五個本機分類的得主名單均已符合官方資料。英文與繁中總頁現顯示 6 / 6 已公布，經濟學獎頁加入官方獲獎理由與兩位得主，並新增兩個肖像專頁及可保存進度的 YT3 頁；原證據門檻亦改為首次開啟自動播放的同框穩定政策 Demo。靜態 QA 檢查 36 個 HTML 檔案，沒有任何失效的本機引用。瀏覽器 QA 亦確認桌面與 iPhone 寬度均無水平溢出、兩張肖像及 Study Lens 互動正常、YT3 進度可保存、Demo 立即自動播放、Pause 控制與多滑桿即時輸出正常，且主控台無警告或錯誤。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(023 2026-10-10 17:59)</span> <span class="question-label">Q:</span> Is the same-frame inspection layout now active across all six Nobel award demos? / <span lang="zh-Hant">六個諾貝爾獎 Demo 是否已全面套用「同框檢查」配置？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>Can every award demo keep its active visual, primary live result, and essential controls together on desktop while preserving a clear mobile reading order?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Yes. Medicine, Physics, Chemistry, Literature, Peace, and Economic Sciences now share a two-column inspection shell: the visual and live result are stacked on the left while the controls remain beside them on the right. Physics keeps its threshold result next to the active Cherenkov/IceCube view, and Chemistry keeps its current stereochemistry or optical-rotation interpretation next to the active model. At phone widths the order becomes visual → primary result → controls → secondary metrics. Browser QA confirmed all six pages at 1440 × 900, 390 × 844, and 320 × 844 with no horizontal overflow, no console warnings or errors, immediate autoplay, and live slider-value updates.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>每個獎項 Demo 是否都能在桌面同時保留作用中的視覺、主要即時結果與必要控制，並維持清楚的手機閱讀順序？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>可以。醫學、物理、化學、文學、和平與經濟學獎現在共用雙欄檢查框架：左側上下排列視覺與即時結果，右側則保留控制面板。物理會把門檻結果緊鄰作用中的 Cherenkov／IceCube 視圖；化學會把目前的立體化學或旋光判讀緊鄰作用中的模型。手機版順序改為「視覺 → 主要結果 → 控制 → 次要指標」。瀏覽器 QA 已確認六頁在 1440 × 900、390 × 844 及 320 × 844 下都沒有水平溢出、主控台警告或錯誤，首次開啟會立即播放，且滑桿數值會即時更新。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(022 2026-10-10 17:51)</span> <span class="question-label">Q:</span> Should every <code>dem</code> play immediately on first open? / <span lang="zh-Hant">每個 <code>dem</code> 首次開啟時是否應立即播放？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>What should happen when an animated DEM HTML page is opened or fully reloaded?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Start the visual animation immediately without requiring a first click. The shared DEM controller now defaults to a running state, displays <code>Pause 暫停</code> on load, keeps Pause and Replay/Reset available, never starts audio automatically, and uses a gentler animation speed when the operating system requests reduced motion. Browser QA fully reloaded all six award demos: every page reported <code>Pause 暫停</code> and <code>running</code> on first open with no warnings or errors; Chemistry also passed Pause → Play and Play → Pause state switching. This rule is saved in both the project abbreviation guidance and the reusable DEM Markdown specification.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>含動畫的 DEM HTML 首次開啟或完整重新載入後，應發生什麼？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>視覺動畫應立即開始，不需先點擊。共用 DEM 控制器現在預設為播放狀態，載入時顯示 <code>Pause 暫停</code>，保留 Pause 與 Replay/Reset，不會自動播放音訊；作業系統要求減少動態時則使用較溫和的播放速度。瀏覽器 QA 已完整重新載入六個獎項 Demo：每頁首次開啟均顯示 <code>Pause 暫停</code> 與 <code>running</code>，沒有警告或錯誤；Chemistry 亦通過 Pause → Play 及 Play → Pause 狀態切換。此規則已同時保存於專案縮寫指引與可重複使用的 DEM Markdown 規格。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(021 2026-10-10 17:49)</span> <span class="question-label">Q:</span> What does same-frame inspection mean for every <code>dem</code>? / <span lang="zh-Hant">每個 <code>dem</code> 的「同框檢查」代表什麼？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How should a Dynamic Explanation Demo arrange its model, curve or plot, sliders, and live output for fast cause-and-effect checking?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>On desktop and landscape viewports, keep the active dynamic model, essential curve or plot, primary 3–5 sliders, units, and live result in one inspection frame. Slider movement must immediately update both the visual and its matching value without changing tabs. At 390 px and 320 px phone widths, stack the model, live result, and controls in adjacent order so the effect remains visible within one short scroll. The reusable <code>dem</code> Markdown specification now includes this layout and its verification checklist.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>動態原理解說 Demo 應如何排列模型、曲線／圖表、滑桿及即時輸出，才能快速核對因果？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>桌面與橫向視窗應把作用中的動態模型、必要曲線／圖表、主要 3–5 個滑桿、單位與即時結果放在同一個檢查畫面。滑桿移動時，視覺與對應數值必須立即同步，不需切換分頁。390 px 與 320 px 手機版則依序緊鄰堆疊模型、主要結果及控制項，讓使用者最多一次短距離捲動即可看到效果。可重複使用的 <code>dem</code> Markdown 規格現已加入此配置及驗證清單。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(020 2026-10-10 14:02)</span> <span class="question-label">Q:</span> How should the Chemistry <code>dem</code> distinguish D/L, R/S, and optical rotation? / <span lang="zh-Hant">Chemistry <code>dem</code> 應如何區分 D/L、R/S 與旋光？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How can a bilingual dynamic explanation prevent the common mistake of treating D/L, R/S, and (+)/(−) as interchangeable labels?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Separate the three questions before the interactive model: D/L is relative Fischer–Rosanoff configuration, R/S is absolute CIP configuration, and (+)/(−) is measured optical rotation. The Chemistry demo now includes a rotatable 3D R/S model with a mirror switch, an ideal polarimeter with scientifically labelled teaching ranges for signed ee, reference specific rotation, path length, and concentration, plus the existing nonlinear ee-amplification view relabelled with neutral enantiomers A/B. Browser QA verified 50:50 = 0.00°, pure A = +5.00°, pure B = −5.00°, the R→S mirror change, a −12.80° multi-slider case, B-leading amplification, 390 px and 320 px layouts without horizontal overflow, and no browser errors.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>雙語動態解說應如何避免把 D/L、R/S 與 (+)/(−) 誤當成可互換標記？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>在互動模型前先分開三個問題：D/L 是 Fischer–Rosanoff 相對構型，R/S 是 CIP 絕對構型，(+)/(−) 則是實測旋光。Chemistry Demo 現包含可旋轉且可產生鏡像的 3D R/S 模型、具有帶正負號 ee、參考比旋光度、光程與濃度等清楚教學範圍的理想旋光儀，以及改用中性 A/B 對映體名稱的原有非線性 ee 放大視圖。瀏覽器 QA 已驗證 50:50 = 0.00°、純 A = +5.00°、純 B = −5.00°、R→S 鏡像切換、多滑桿 −12.80° 案例、B 對映體領先的放大結果、390 px 與 320 px 版面無水平溢出，且無瀏覽器錯誤。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(019 2026-10-10 13:47)</span> <span class="question-label">Q:</span> What should the new <code>dem</code> command build and how was it applied to Cherenkov light? / <span lang="zh-Hant">新增的 <code>dem</code> 指令應建立什麼，並如何套用於 Cherenkov 光？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How should NOBEL2026 create bilingual dynamic explanations with useful 2D/3D views and scientifically suitable slider ranges?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Add <code>dem</code> to the project abbreviations and save a reusable bilingual Markdown specification covering view selection, parameter ranges, units, accessibility, and verification. The Physics demo now switches between a 2D Cherenkov-threshold/cone view and a 3D projected DOM-array view. Its teaching controls cover particle speed, refractive index, scattering length, absorption length, energy, zenith, depth, clarity, and DOM threshold. Browser QA verified the below-threshold state (<code>βn = 0.950 ≤ 1</code>), the 40.7° ice reference state, TRACK/CASCADE switching, 390 px and 320 px widths without horizontal overflow, and no console warnings or errors.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>NOBEL2026 應如何建立具有實用 2D/3D 視圖與科學化滑桿範圍的雙語動態解說？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>把 <code>dem</code> 加入專案縮寫規則，並儲存一份可重複使用的雙語 Markdown 規格，涵蓋視圖選擇、參數範圍、單位、無障礙與驗證。Physics Demo 現可在 2D Cherenkov 門檻／光錐視圖與 3D DOM 陣列投影視圖間切換，教學控制包含粒子速度、折射率、散射長度、吸收長度、能量、天頂角、深度、清晰度與 DOM 門檻。瀏覽器 QA 已驗證低於門檻狀態（<code>βn = 0.950 ≤ 1</code>）、40.7° 冰參考狀態、TRACK/CASCADE 切換、390 px 與 320 px 寬度無水平溢出，且主控台無警告或錯誤。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(018 2026-10-10 13:32)</span> <span class="question-label">Q:</span> What exactly happens during IceCube's Cherenkov-photon process? / <span lang="zh-Hant">IceCube 的 Cherenkov 光子過程究竟發生了什麼？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How does a neutral neutrino produce the light pattern used by IceCube?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>The neutrino is not observed directly. A rare weak interaction produces relativistic charged secondary particles. When a secondary moves faster than the phase velocity of light in ice, <code>c/n</code> but never faster than vacuum <code>c</code>, its electromagnetic field creates a coherent Cherenkov cone. For <code>n ≈ 1.31–1.33</code> and <code>β ≈ 1</code>, <code>cos θᴄ = 1/(βn)</code> gives an angle near 41°. Scattering delays and redirects photons, absorption removes some, and DOM arrival times plus recorded charge are used to reconstruct event direction, energy, and topology.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>不帶電的中微子如何產生 IceCube 用來重建事件的光形？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>IceCube 不直接觀測中微子。罕見的弱互作用會產生相對論性的帶電次級粒子；當次級粒子速度高於冰中光的相速 <code>c/n</code>、但仍低於真空光速 <code>c</code> 時，其電磁場會形成相干的 Cherenkov 光錐。當 <code>n ≈ 1.31–1.33</code>、<code>β ≈ 1</code> 時，<code>cos θᴄ = 1/(βn)</code> 得到約 41°。散射會延遲並改變光子方向，吸收會消除部分光子；DOM 的抵達時間與記錄電荷則用來重建事件方向、能量及形態。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(017 2026-10-10 13:29)</span> <span class="question-label">Q:</span> How can the chemistry demo make L and R handedness easy to distinguish? / <span lang="zh-Hant">化學 Demo 如何讓 L 與 R 手性容易分辨？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How can a phone reader understand the difference between the L and R mirror forms before reading the amplification chart?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Add a large mirrored-hand comparison, explicitly state that the forms are mirror images that cannot be superimposed by rotation, and show a live L/R percentage bar with the leading hand. At a 390 × 844 phone viewport, the page had no horizontal overflow; changing the initial bias to −3% correctly produced R-leading text, L 11% / R 89%, and no console warnings or errors.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>手機讀者如何在閱讀放大曲線前，先理解 L 與 R 鏡像形式的差異？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>加入大型左右手鏡像比較，明確說明兩者互為鏡像且無法透過旋轉完全重疊，並以即時 L/R 百分比條顯示目前優勢手性。在 390 × 844 手機視窗下，頁面沒有水平溢出；將初始偏向調為 −3% 後，正確顯示 R 領先、L 11% / R 89%，且主控台無警告或錯誤。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(016 2026-10-09 21:19)</span> <span class="question-label">Q:</span> How can the demos be opened easily on an iPhone? / <span lang="zh-Hant">如何在 iPhone 上快速開啟 Demo？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>What is the simplest way to view the local NOBEL2026 demos on an iPhone without publishing the whole project?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Serve only the <code>dist</code> folder on the Mac's local network and open its Wi-Fi address from an iPhone on the same network. The IceCube route returned HTTP 200 through the Mac's LAN address; the link remains available while the scoped server and Mac stay active.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>不公開整個專案時，最簡單的 iPhone 本機 Demo 觀看方式是什麼？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>只在 Mac 的區域網路分享 <code>dist</code> 資料夾，並由同一 Wi-Fi 的 iPhone 開啟 Mac 網路位址。IceCube 路徑已透過 Mac 的 LAN 位址取得 HTTP 200；只要限定範圍的伺服器與 Mac 保持運作，連結即可使用。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(015 2026-10-09 21:09)</span> <span class="question-label">Q:</span> How can every Nobel category be understood through an interactive demo? / <span lang="zh-Hant">如何用互動 Demo 預先理解每個諾貝爾獎項？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>What should be added under every Nobel category folder to make its core mechanism easier to understand?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Add a self-contained <code>demo/</code> lab with adjustable inputs, animated mechanism, live outputs, and an IPO explanation. The six labs cover optogenetics, IceCube event reconstruction, chiral amplification, literary form mixing, accountability systems, and an evidence-safe pending gate for Economic Sciences.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>每個諾貝爾獎項分類資料夾應加入什麼內容，才能更容易理解其核心機制？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>加入可獨立開啟的 <code>demo/</code> 實驗室，包含可調輸入、動態機制、即時輸出與 IPO 說明。六個實驗室分別涵蓋光遺傳學、IceCube 事件重建、手性放大、文體混合、究責制度，以及維持待公布與不推測原則的經濟學獎證據門檻。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(014 2026-10-09 20:41)</span> <span class="question-label">Q:</span> Should QA Digest show both English and Traditional Chinese? / <span lang="zh-Hant">QA Digest 是否應同時顯示英文與繁體中文？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How should every QA Digest record support both English and Traditional Chinese?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Keep both languages inside the same stable, collapsed record so its index, timestamp, order, and verification status remain synchronized.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>每一筆 QA Digest 紀錄應如何同時支援英文與繁體中文？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>把兩種語言保留在同一筆可摺疊紀錄中，使索引、時間標籤、排序與驗證狀態始終同步。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(013 2026-10-09 20:35)</span> <span class="question-label">Q:</span> How should each Nobel award be presented in Traditional Chinese? / <span lang="zh-Hant">每個諾貝爾獎項應如何提供繁中版本？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How can the 2026 Nobel hub and all six award categories support Traditional Chinese without losing the English originals?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Add a Traditional Chinese hub plus one localized page for each award category, preserve Latin-script laureate names, translate the explanatory and IPO content, and provide two-way <code>繁中</code>/<code>EN</code> navigation. The unreleased Economic Sciences page remains evidence-safe with its verified schedule and live countdown. All local links, seven Traditional Chinese routes, desktop widths, mobile widths, and browser console checks passed.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>如何讓 2026 諾貝爾獎總覽與六個獎項分類支援繁體中文，同時保留英文原版？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>新增繁中總覽與六個在地化獎項頁，保留得主姓名的拉丁字母拼寫，翻譯解說與 IPO 內容，並提供雙向 <code>繁中</code>/<code>EN</code> 導覽。尚未公布的經濟學獎以已核實時程與即時倒數維持證據安全。七條繁中路徑、本機連結、桌面與手機寬度，以及瀏覽器主控台檢查均已通過。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(012 2026-10-09 20:04)</span> <span class="question-label">Q:</span> How should clear laureate photos appear on each profile index? / <span lang="zh-Hant">清楚的得主照片應如何呈現在人物首頁？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How can every laureate be immediately identifiable on the first screen of their <code>index.html</code>?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Store a clear institutional portrait in each laureate folder and display it in the hero with descriptive alt text, visible source attribution, responsive cropping, and a complete first-screen layout. All eight portraits and local links passed static and browser QA; Navi Pillay’s source orientation was also normalised.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>如何讓每位得主在其 <code>index.html</code> 的第一個畫面就能立即被辨識？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>在每位得主資料夾保存清楚的機構肖像照，並於主視覺區顯示描述性替代文字、可見來源標示、響應式裁切與完整首屏版面。八張照片與本機連結均通過靜態與瀏覽器 QA；Navi Pillay 的來源照片方向也已校正。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(011 2026-10-09 19:59)</span> <span class="question-label">Q:</span> What file structure should every laureate subfolder use? / <span lang="zh-Hant">每位得主的子資料夾應使用哪種檔案結構？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>Should each named laureate folder mirror the <code>karl-deisseroth</code> folder shown in Finder?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Yes. Every released laureate now has a named subfolder containing <code>index.html</code>, <code>app.js</code>, and <code>styles.css</code>. The local files load shared presentation and interaction code, and browser QA confirmed that the page styling and Study Lens interaction still work.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>每個以得主姓名命名的資料夾，是否都應比照 Finder 中的 <code>karl-deisseroth</code> 資料夾？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>是。每位已公布得主目前都有具名子資料夾，包含 <code>index.html</code>、<code>app.js</code> 與 <code>styles.css</code>。本機檔案載入共用的展示與互動程式碼，瀏覽器 QA 也確認頁面樣式與 Study Lens 互動正常。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(010 2026-10-09 19:58)</span> <span class="question-label">Q:</span> How should every released Nobel laureate receive a consistent introduction? / <span lang="zh-Hant">如何一致地介紹每位已公布的諾貝爾獎得主？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How can the Karl Deisseroth-style introduction be extended to all other released laureates?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Add an individual subfolder and responsive profile page for every laureate, with a biographical introduction, IPO contribution model, interactive three-pass Study Lens, and verified sources. All eight current laureate routes, category cards, local links, and Study Lens switching passed local browser QA.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>如何把 Karl Deisseroth 風格的介紹延伸到所有其他已公布得主？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>為每位得主新增獨立子資料夾與響應式人物頁，包含人物介紹、IPO 貢獻模型、三階段互動 Study Lens 與已核實來源。目前八條得主路徑、分類卡片、本機連結及 Study Lens 切換都已通過本機瀏覽器 QA。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(009 2026-10-09 17:49)</span> <span class="question-label">Q:</span> How should all 2026 Nobel topics be organized for review? / <span lang="zh-Hant">2026 諾貝爾獎主題應如何整理以便複習？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How should released and unreleased 2026 Nobel topics be organized for fast, consistent review?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Use official release-order folders from <code>01_medicine</code> through <code>06_economic_sciences</code>. Released categories include a topic summary and persistent YT3 review page; unreleased categories stay marked pending with the verified announcement time. Local browser QA covered all 12 current routes and the reviewed-state control.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>如何整理 2026 年已公布與尚未公布的諾貝爾獎主題，以利快速且一致地複習？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>依官方公布順序建立從 <code>01_medicine</code> 到 <code>06_economic_sciences</code> 的資料夾。已公布分類包含主題摘要與可保存進度的 YT3 複習頁；未公布分類則維持待公布狀態並顯示已核實的公布時間。本機瀏覽器 QA 已涵蓋現有 12 條路徑與複習狀態控制。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(008 2026-10-09 00:03)</span> <span class="question-label">Q:</span> How can Deisseroth's optogenetics work be explored as an IPO model? / <span lang="zh-Hant">如何用 IPO 模型探索 Deisseroth 的光遺傳學研究？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How can Deisseroth's optogenetics work and Nobel-recognized contribution be explained through an interactive input-process-output model?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Use a responsive 3D neural-volume simulator with adjustable wavelength, irradiance, duty cycle, pulse frequency, opsin expression, excitation/inhibition presets, a matching mathematical model, live output metrics, and verified Stanford sources. Local browser QA confirmed both positive ChR2 and negative eNpHR responses without console errors.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>如何透過互動式輸入—處理—輸出模型，說明 Deisseroth 的光遺傳學研究與諾貝爾獎肯定的貢獻？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>使用響應式 3D 神經體積模擬器，提供可調波長、照度、工作週期、脈衝頻率、視蛋白表現量、興奮／抑制預設、相應數學模型、即時輸出指標及已核實的 Stanford 來源。本機瀏覽器 QA 已確認 ChR2 的正向反應與 eNpHR 的負向反應，且無主控台錯誤。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(007 2026-10-08 23:50)</span> <span class="question-label">Q:</span> Should completed tasks play an audible alert? / <span lang="zh-Hant">任務完成時是否應播放提示音？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>Should completed tasks play an audible alert?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Yes. Run <code>tools/notify_jb_done.sh</code> once to play a short double beep immediately before the final <span class="done-label">🟢 JB_DONE&gt;</span> response.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>任務完成時是否應播放提示音？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>是。在最終 <span class="done-label">🟢 JB_DONE&gt;</span> 回覆之前執行一次 <code>tools/notify_jb_done.sh</code>，播放短促的雙提示音。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(006 2026-10-08 23:49)</span> <span class="question-label">Q:</span> How should useful next steps be reported? / <span lang="zh-Hant">實用的下一步應如何回報？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How should useful next steps be reported?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Use the orange, bold label <span class="next-label">🟠 JB_NEXT&gt;</span> followed by one concrete user action, after the <span class="done-label">🟢 JB_DONE&gt;</span> line.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>實用的下一步應如何回報？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>在 <span class="done-label">🟢 JB_DONE&gt;</span> 後使用橘色粗體標籤 <span class="next-label">🟠 JB_NEXT&gt;</span>，並接上一個明確可執行的使用者動作。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(005 2026-10-08 23:49)</span> <span class="question-label">Q:</span> How should completed tasks be reported? / <span lang="zh-Hant">已完成的任務應如何回報？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How should completed tasks be reported?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Use the green, bold completion label <span class="done-label">🟢 JB_DONE&gt;</span> followed by a concise result and verification summary.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>已完成的任務應如何回報？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>使用綠色粗體完成標籤 <span class="done-label">🟢 JB_DONE&gt;</span>，並接上精簡的結果與驗證摘要。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(004 2026-10-08 23:47)</span> <span class="question-label">Q:</span> Which display colors should QA Digest use? / <span lang="zh-Hant">QA Digest 應使用哪些顯示顏色？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>Which display colors should QA Digest use?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Use light mode with blue question labels, green answer labels, neutral body text, and gray timetags.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>QA Digest 應使用哪些顯示顏色？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>使用淺色模式、藍色問題標籤、綠色答案標籤、中性色正文及灰色時間標籤。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(003 2026-10-08 23:40)</span> <span class="question-label">Q:</span> Which colors should identify questions and answers? / <span lang="zh-Hant">問題與答案應分別使用哪些顏色？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>Which colors should identify questions and answers?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Questions were initially red and answers green; version 04 supersedes this with blue question labels.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>問題與答案應分別使用哪些顏色？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>最初問題使用紅色、答案使用綠色；第 04 版已將問題標籤改為藍色並取代舊規則。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(002 2026-10-08 23:39)</span> <span class="question-label">Q:</span> What format should QA Digest entries use? / <span lang="zh-Hant">QA Digest 紀錄應使用什麼格式？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>What format should QA Digest entries use?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>Use concise <code>Q:</code> and <code>A:</code> labels instead of Unknown and Known.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>QA Digest 紀錄應使用什麼格式？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>使用精簡的 <code>Q:</code> 與 <code>A:</code> 標籤，取代 Unknown 與 Known。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(001 2026-10-08 23:39)</span> <span class="question-label">Q:</span> What should the progress page be called? / <span lang="zh-Hant">進度頁應如何命名？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>What should the project's progress page be called and where should it be stored?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>The page is named <strong>QA Digest</strong> and stored at <code>doc/QA_Digest.html</code>.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>專案進度頁應使用什麼名稱，並儲存在哪裡？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>頁面名稱為 <strong>QA Digest</strong>，儲存在 <code>doc/QA_Digest.html</code>。</dd>
+      </dl>
+    </details>
+  </main>
+  <footer>QA Digest Bilingual V25 2026-10-16 09:06 · 英文／繁中</footer>
+</body>
+</html>

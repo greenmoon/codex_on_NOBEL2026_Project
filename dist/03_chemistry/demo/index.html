@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Bilingual interactive explanation of D/L, R/S, optical rotation, and enantiomeric excess.">
+  <title>NOBEL2026 Chemistry Demo Lab V04 2026.10.10 17:54</title>
+  <link rel="stylesheet" href="../../shared/base.css">
+  <link rel="stylesheet" href="../../shared/demo.css?v=20261010-1754">
+  <link rel="stylesheet" href="styles.css?v=20261010-1800">
+</head>
+<body style="--demo-accent:#b897ff">
+  <header class="site-nav">
+    <a class="logo" href="../../index-tc.html"><i>N</i> NOBEL<span>2026</span></a>
+    <nav><a class="demo-back" href="../index-tc.html">← 化學獎</a><a href="../index.html">EN overview</a></nav>
+    <b>DEM 03 · CHEMISTRY</b>
+  </header>
+
+  <main class="demo-shell">
+    <section class="demo-head">
+      <div>
+        <p class="kicker">STEREOCHEMISTRY · 立體化學</p>
+        <h1>Three labels.<br>Three questions.</h1>
+        <p><b>D/L</b>、<b>R/S</b> 與 <b>(+)/(−)</b> 描述的是不同問題。先分清名稱，再用動態旋光儀觀察混合比例如何改變實測角度。</p>
+      </div>
+      <p class="demo-note"><b>CORE RULE · 核心規則</b><br>D/L ≠ R/S ≠ (+)/(−)<br>There is no universal conversion. 三者沒有通用換算。</p>
+    </section>
+
+    <section class="notation-guide" aria-labelledby="notationTitle">
+      <div class="guide-heading">
+        <p class="eyebrow">READ THE LABEL BEFORE THE MOLECULE</p>
+        <h2 id="notationTitle">先問：這個符號正在回答哪個問題？</h2>
+        <p>手的比喻只表示「互為鏡像且不能重疊」；它本身不會告訴你分子是 D、L、R、S、(+) 或 (−)。</p>
+      </div>
+
+      <div class="mirror-analogy" aria-label="Two non-superimposable mirror-image hands">
+        <article><span aria-hidden="true">🫲</span><b>Mirror form A</b><small>鏡像形式 A</small></article>
+        <div aria-hidden="true"><i></i><em>MIRROR<br>鏡面</em></div>
+        <article><span aria-hidden="true">🫱</span><b>Mirror form B</b><small>鏡像形式 B</small></article>
+      </div>
+
+      <div class="notation-grid">
+        <article class="notation-card dl-card">
+          <span>D / L</span>
+          <h3>Relative configuration<br>相對構型</h3>
+          <p>依 Fischer–Rosanoff 慣例，與甘油醛參考構型建立關係。<b>D 或 L 不代表旋光方向。</b></p>
+          <small>QUESTION · 屬於哪個 Fischer 參考系列？</small>
+        </article>
+        <article class="notation-card rs-card">
+          <span>R / S</span>
+          <h3>Absolute configuration<br>絕對構型</h3>
+          <p>依 CIP 優先序排列 1→2→3；最低優先序 4 背向觀察者時，順時針為 R、逆時針為 S。</p>
+          <small>QUESTION · 原子在 3D 空間如何排列？</small>
+        </article>
+        <article class="notation-card pm-card">
+          <span>(+) / (−)</span>
+          <h3>Measured optical rotation<br>實測旋光</h3>
+          <p>偏振光平面向順時針旋轉為 (+)，反向為 (−)；必須同時寫明溫度、波長、溶劑等條件。</p>
+          <small>QUESTION · 樣品把偏振面轉向哪裡？</small>
+        </article>
+      </div>
+
+      <div class="example-strip">
+        <p><b>Reference · 參考：</b> D-glyceraldehyde happens to be (R)-(+), but this is not a universal rule. D-甘油醛恰為 (R)-(+)，不可把它當成通則。</p>
+        <p><b>Exception · 例外：</b> Most L-amino acids are S, but L-cysteine is R because sulfur changes the CIP priority. 多數 L-胺基酸為 S，但 L-cysteine 因硫原子的 CIP 優先序而是 R。</p>
+      </div>
+    </section>
+
+    <section class="demo-lab" aria-label="Interactive stereochemistry lab">
+      <div class="view-switch" aria-label="Demo view selection">
+        <button data-view="labels" aria-pressed="true"><b>01</b><span>3D LABELS<br><small>3D 標記</small></span></button>
+        <button data-view="polarimeter" aria-pressed="false"><b>02</b><span>POLARIMETER<br><small>旋光儀</small></span></button>
+        <button data-view="amplification" aria-pressed="false"><b>03</b><span>ee AMPLIFICATION<br><small>ee 放大</small></span></button>
+      </div>
+
+      <div class="demo-stage">
+        <span class="stage-label" id="stageLabel">ABSOLUTE CONFIGURATION · 絕對構型</span>
+        <canvas id="chemistryCanvas" role="img" aria-label="Interactive stereochemistry model"></canvas>
+        <div class="stage-legend" id="stageLegend"></div>
+      </div>
+
+      <aside class="demo-controls">
+        <h2 id="controlsTitle">Input 輸入</h2>
+        <p class="sub" id="controlsSubtitle">Priority → orientation → R/S</p>
+
+        <div class="control-panel" data-panel="labels">
+          <div class="control">
+            <label>Configuration 構型 <output id="configurationValue">R</output></label>
+            <div class="choice-row config-choice">
+              <button data-config="R" aria-pressed="true">R · CW 順時針</button>
+              <button data-config="S" aria-pressed="false">S · CCW 逆時針</button>
+            </div>
+          </div>
+          <div class="control">
+            <label for="moleculeRotation">Rotate view 旋轉視角 <output id="moleculeRotationValue"></output></label>
+            <input id="moleculeRotation" type="range" min="0" max="360" step="1" value="18">
+            <small class="range-note">Range 範圍 0–360° · rotation does not change R/S 旋轉不會改變構型</small>
+          </div>
+          <div class="action-row"><button id="mirrorMolecule">Mirror molecule 產生鏡像</button></div>
+        </div>
+
+        <div class="control-panel is-hidden" data-panel="polarimeter">
+          <div class="preset-row" aria-label="Polarimeter quick states">
+            <button id="presetRacemic">50:50 消旋</button>
+            <button id="presetPlus">PURE A (+)</button>
+            <button id="presetMinus">PURE B (−)</button>
+          </div>
+          <div class="control">
+            <label for="mixtureEE">Signed ee 鏡像異構過量 <output id="mixtureEEValue"></output></label>
+            <input id="mixtureEE" type="range" min="-100" max="100" step="1" value="60">
+            <small class="range-note">Range 範圍 −100…+100% · − favors B；+ favors A</small>
+          </div>
+          <div class="control">
+            <label for="specificRotation">Reference [α] 參考比旋光度 <output id="specificRotationValue"></output></label>
+            <input id="specificRotation" type="range" min="-100" max="100" step="1" value="50">
+            <small class="range-note">Teaching range 教學範圍 −100…+100 °·mL·g⁻¹·dm⁻¹</small>
+          </div>
+          <div class="control">
+            <label for="pathLength">Path length l 光程 <output id="pathLengthValue"></output></label>
+            <input id="pathLength" type="range" min="0.1" max="2" step="0.1" value="1">
+            <small class="range-note">Range 範圍 0.1–2.0 dm</small>
+          </div>
+          <div class="control">
+            <label for="concentration">Concentration c 濃度 <output id="concentrationValue"></output></label>
+            <input id="concentration" type="range" min="0.01" max="0.2" step="0.01" value="0.1">
+            <small class="range-note">Teaching range 教學範圍 0.01–0.20 g/mL</small>
+          </div>
+        </div>
+
+        <div class="control-panel is-hidden" data-panel="amplification">
+          <div class="control">
+            <label for="initialEE">Initial imbalance 初始 ee <output id="initialEEValue"></output></label>
+            <input id="initialEE" type="range" min="-5" max="5" step="0.1" value="1">
+            <small class="range-note">Range 範圍 −5…+5% · − favors B；+ favors A</small>
+          </div>
+          <div class="control">
+            <label for="feedback">Autocatalytic feedback 自催化 <output id="feedbackValue"></output></label>
+            <input id="feedback" type="range" min="0" max="150" value="90">
+            <small class="range-note">Teaching range 教學範圍 0–1.50×</small>
+          </div>
+          <div class="control">
+            <label for="nonlinear">Nonlinear strength 非線性 <output id="nonlinearValue"></output></label>
+            <input id="nonlinear" type="range" min="0" max="200" value="110">
+            <small class="range-note">Teaching range 教學範圍 0–2.00</small>
+          </div>
+          <div class="control">
+            <label for="cycles">Reaction cycles 反應輪數 <output id="cyclesValue"></output></label>
+            <input id="cycles" type="range" min="1" max="40" value="24">
+            <small class="range-note">Range 範圍 1–40 cycles</small>
+          </div>
+        </div>
+
+        <div class="action-row motion-actions">
+          <button class="primary" id="toggleMotion">Pause 暫停</button>
+          <button id="resetDemo">Replay 重播</button>
+        </div>
+      </aside>
+
+      <div class="live-result" aria-live="polite">
+        <div><small id="resultEyebrow">NOW · 目前判讀</small><strong id="resultTitle">R configuration · R 構型</strong><p id="resultSentence">最低優先序背向時，1→2→3 為順時針。旋轉整個分子不會把 R 變成 S。</p></div>
+        <div class="relation-badge" id="relationBadge"><b>R/S</b><span>does not determine<br>D/L or (+)/(−)<br>不能推出另外兩者</span></div>
+      </div>
+
+      <div class="demo-output">
+        <article><small id="metricLabel1">ABSOLUTE · 絕對構型</small><strong id="metricValue1">R</strong><p id="metricNote1">CIP priority · CIP 優先序</p></article>
+        <article><small id="metricLabel2">D/L · 相對構型</small><strong id="metricValue2">Not assigned</strong><p id="metricNote2">Needs a Fischer reference · 需 Fischer 參考</p></article>
+        <article><small id="metricLabel3">ROTATION · 旋光</small><strong id="metricValue3">Not measured</strong><p id="metricNote3">Needs an experiment · 需實驗測量</p></article>
+      </div>
+
+      <div class="ipo-strip">
+        <article><b>INPUT 輸入</b><h3 id="ipoInputTitle">Priority order</h3><p id="ipoInputText">為四個取代基排定 CIP 優先序 1–4。</p></article>
+        <article><b>PROCESS 處理</b><h3 id="ipoProcessTitle">Orient in 3D</h3><p id="ipoProcessText">讓最低優先序 4 背向，再追蹤 1→2→3。</p></article>
+        <article><b>OUTPUT 輸出</b><h3 id="ipoOutputTitle">Assign R or S</h3><p id="ipoOutputText">順時針為 R；逆時針為 S。</p></article>
+      </div>
+
+      <p class="formula" id="formulaText"><code>priority 4 points away: 1 → 2 → 3 = clockwise ⇒ R</code> · R/S 是空間排列，不是旋光方向。</p>
+      <p class="source-note">Definitions · 定義：<a href="https://goldbook.iupac.org/terms/view/O04303" target="_blank" rel="noreferrer">IUPAC optical activity</a> · <a href="https://iupac.org/what-we-do/books/bluebook/" target="_blank" rel="noreferrer">IUPAC Blue Book</a>. The polarimeter is an ideal two-enantiomer teaching model; actual values depend on compound and measurement conditions. 旋光儀為理想雙對映體教學模型，真實數值依化合物與測量條件而定。</p>
+    </section>
+  </main>
+
+  <footer class="site-footer demo-footer"><b>NOBEL2026 · Chemistry DEM</b><span>D/L · R/S · (+)/(−) · 旋光</span><span>V04 2026.10.10 17:54</span></footer>
+  <script src="../../shared/demo.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

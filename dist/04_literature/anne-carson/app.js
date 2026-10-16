@@ -1,0 +1,1 @@
+import('../../shared/profile.js');
