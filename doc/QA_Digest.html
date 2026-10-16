@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>QA Digest Bilingual V31 2026-10-17 06:19</title>
+  <title>QA Digest Bilingual V33 2026-10-17 06:28</title>
   <style>
     :root { color-scheme: light; font-family: system-ui, sans-serif; }
     body { max-width: 980px; margin: 0 auto; padding: 2rem 1rem; line-height: 1.6; color: #101828; background: #ffffff; }
@@ -31,6 +31,32 @@
     <p class="language-key"><span>EN · English</span><span lang="zh-Hant">繁中 · Traditional Chinese</span></p>
   </header>
   <main>
+    <details>
+      <summary><span class="timetag">(033 2026-10-17 06:28)</span> <span class="question-label">Q:</span> Do all six award YT3 pages now show a corresponding YouTube thumbnail for each review route? / <span lang="zh-Hant">六個獎項的 YT3 頁面現在是否都為每條複習路徑顯示對應的 YouTube 縮圖？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How can every award use the same 01/02/03 visual-review pattern without linking to generic YouTube search results?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>All six YT3 pages now use three selected videos: an official announcement, a topic or mechanism explainer, and a laureate interview or first-person route. Every card loads the matching YouTube thumbnail and links directly to that exact video while retaining its persistent reviewed/not-reviewed control. Static QA confirms 18 thumbnail covers, 18 matching direct-video links and 18 review controls; YouTube oEmbed resolves all 18 videos and all 18 thumbnail endpoints return HTTP 200.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>如何讓每個獎項都沿用相同的 01／02／03 視覺複習模式，同時不再連到一般的 YouTube 搜尋結果？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>六個 YT3 頁面現在各使用三支指定影片：正式公布、主題或機制解說，以及得主訪談或第一人稱說明。每張卡片都載入該影片的對應 YouTube 縮圖，直接連到同一支影片，並保留持久化的已複習／未複習控制。靜態 QA 確認共有 18 張縮圖、18 個相符的影片直達連結與 18 個複習控制；YouTube oEmbed 可解析全部 18 支影片，18 個縮圖端點也皆回傳 HTTP 200。</dd>
+      </dl>
+    </details>
+    <details>
+      <summary><span class="timetag">(032 2026-10-17 06:24)</span> <span class="question-label">Q:</span> Why did the JB_DONE double-beep script report a macOS syntax error, and is it fixed? / <span lang="zh-Hant">為何 JB_DONE 雙提示音腳本會回報 macOS 語法錯誤，現在是否已修正？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>Why did the completion sound fail with an AppleScript parsing error after <code>afplay</code> could not start?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>The restricted execution context denied access to the macOS audio service, so <code>afplay</code> failed first. The old fallback then called the Standard Additions <code>beep 2</code> command in the same restricted context, where it was misreported as a syntax error. The script now uses <code>afplay</code> for both Glass sounds and returns a precise audio-access message if CoreAudio is unavailable, instead of invoking the misleading AppleScript fallback. Shell syntax validation passed, the restricted-path failure message was verified, and an authorized macOS audio test completed both sounds with exit code 0.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>為何 <code>afplay</code> 無法啟動後，完成提示音會以 AppleScript 解析錯誤結束？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>受限執行環境先阻擋了 macOS 音訊服務，使 <code>afplay</code> 失敗；舊備援接著在同一受限環境呼叫 Standard Additions 的 <code>beep 2</code>，因此被誤報為語法錯誤。腳本現在兩聲都直接使用 <code>afplay</code>；若 CoreAudio 無法使用，會回報明確的音訊權限訊息，不再呼叫造成誤導的 AppleScript 備援。shell 語法檢查已通過，受限路徑的錯誤訊息已驗證，允許 macOS 音訊存取後也已成功播放兩聲並以結束碼 0 完成。</dd>
+      </dl>
+    </details>
     <details>
       <summary><span class="timetag">(031 2026-10-17 06:19)</span> <span class="question-label">Q:</span> Does the Medicine YT3 page now show the selected YouTube thumbnails in cards 01, 02 and 03? / <span lang="zh-Hant">醫學獎 YT3 頁面的 01、02、03 卡片是否已顯示指定的 YouTube 縮圖？</span></summary>
       <dl>
@@ -435,6 +461,6 @@
       </dl>
     </details>
   </main>
-  <footer>QA Digest Bilingual V31 2026-10-17 06:19 · 英文／繁中</footer>
+  <footer>QA Digest Bilingual V33 2026-10-17 06:28 · 英文／繁中</footer>
 </body>
 </html>

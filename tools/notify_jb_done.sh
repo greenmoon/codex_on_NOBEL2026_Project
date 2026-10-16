@@ -8,9 +8,18 @@ if [ ! -r "$sound_file" ]; then
   exit 1
 fi
 
-if /usr/bin/afplay "$sound_file" 2>/dev/null; then
-  /bin/sleep 0.12
-  /usr/bin/afplay "$sound_file"
-else
-  /usr/bin/osascript -e 'beep 2'
+play_sound() {
+  /usr/bin/afplay "$sound_file" 2>/dev/null
+}
+
+if ! play_sound; then
+  echo "JB_DONE sound playback needs access to the macOS audio service." >&2
+  exit 1
+fi
+
+/bin/sleep 0.12
+
+if ! play_sound; then
+  echo "JB_DONE second alert sound could not be played." >&2
+  exit 1
 fi
