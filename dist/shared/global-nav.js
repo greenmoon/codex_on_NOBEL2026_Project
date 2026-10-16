@@ -184,4 +184,11 @@
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });
   else init();
+
+  if (!window.__nobelReviewFlowRequested) {
+    window.__nobelReviewFlowRequested = true;
+    const reviewFlow = document.createElement("script");
+    reviewFlow.src = new URL("review-flow.js", scriptUrl).href;
+    document.head.append(reviewFlow);
+  }
 })();
