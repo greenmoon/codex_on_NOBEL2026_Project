@@ -1,0 +1,44 @@
+:root{--nu-blue:#2563eb;--nu-green:#15803d;--nu-amber:#c2410c;--nu-ink:#111827;--nu-muted:#667085;--nu-line:#d7dce4;--nu-paper:#f5f3ed}
+*{box-sizing:border-box}
+body{margin:0;background:var(--nu-paper);color:var(--nu-ink)}
+.nu-shell{padding:56px clamp(18px,4vw,68px) 104px;background:linear-gradient(180deg,var(--topic-soft,#e7f6fb) 0,rgba(255,255,255,.2) 340px,var(--nu-paper) 720px)}
+.nu-hero{max-width:1500px;margin:0 auto 30px;display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.62fr);gap:42px;align-items:end}
+.nu-kicker{margin:0;color:var(--topic,var(--nu-blue));font:900 11px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.16em;text-transform:uppercase}
+.nu-hero h1{max-width:900px;margin:12px 0 0;font:500 clamp(46px,6.3vw,92px)/.95 Georgia,"Noto Serif TC",serif;letter-spacing:-.055em}
+.nu-hero>p{margin:0;padding-left:20px;border-left:4px solid var(--topic,var(--nu-blue));color:#4f5967;font-size:15px;line-height:1.75}
+.nu-workbench{max-width:1500px;margin:auto;display:grid;grid-template-columns:minmax(360px,.88fr) minmax(0,1.12fr);gap:16px;align-items:start}
+.math-model,.nu-explain{border:1px solid var(--nu-line);border-radius:24px;background:#fff;box-shadow:0 18px 54px rgba(26,38,60,.08);overflow:hidden}
+.math-model{position:sticky;top:138px}
+.panel-head{display:flex;justify-content:space-between;gap:20px;padding:24px 26px 20px;border-bottom:1px solid var(--nu-line);align-items:flex-start}
+.panel-head small{display:block;color:var(--topic,var(--nu-blue));font:900 9px/1.3 ui-monospace,monospace;letter-spacing:.15em}
+.panel-head h2{margin:8px 0 0;font:600 clamp(27px,3vw,40px)/1.05 Georgia,"Noto Serif TC",serif}
+.panel-tag{flex:0 0 auto;padding:8px 10px;border-radius:999px;background:var(--topic-soft,#e7f6fb);color:var(--topic,var(--nu-blue));font:900 9px/1 ui-monospace,monospace}
+.model-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:center;padding:20px 26px;background:#f8fafc}
+.model-flow span{min-height:62px;display:grid;place-items:center;padding:9px;border:1px solid #e2e7ee;border-radius:13px;background:#fff;text-align:center;font-size:12px;font-weight:850;line-height:1.35}
+.model-flow b{color:var(--topic,var(--nu-blue));font-size:20px}
+.formula-list{padding:8px 26px 18px}
+.formula-row{display:grid;grid-template-columns:82px minmax(0,1fr);gap:12px;padding:17px 0;border-bottom:1px solid #e5e7eb;align-items:start}
+.formula-row:last-child{border-bottom:0}
+.formula-row span{padding-top:4px;color:#6b7482;font:900 9px/1.3 ui-monospace,monospace;letter-spacing:.12em}
+.formula-row code{font:750 clamp(14px,1.35vw,20px)/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;color:#202936;overflow-wrap:anywhere}
+.symbol-note{margin:0;padding:17px 26px;border-top:1px solid var(--nu-line);background:#fbfaf7;color:#626b77;font-size:11px;line-height:1.65}
+.symbol-note b{color:#303946}
+.nu-explain .panel-head{background:#111827;color:#fff;border-color:#111827}
+.nu-explain .panel-head small{color:#9ec5ff}.nu-explain .panel-tag{background:#263348;color:#dbeafe}
+.input-block{padding:22px 26px;border-bottom:1px solid var(--nu-line)}
+.section-label{margin:0 0 12px;color:#687384;font:900 9px/1.4 ui-monospace,monospace;letter-spacing:.14em}
+.input-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.input-chip{min-height:70px;padding:12px;border:1px solid #dce1e8;border-radius:13px;background:#f8fafc}
+.input-chip span{display:block;color:#697282;font-size:10px;font-weight:750;line-height:1.35}.input-chip strong{display:block;margin-top:7px;color:#152033;font:850 14px/1.2 ui-monospace,monospace;overflow-wrap:anywhere}
+.number-steps{padding:6px 26px 12px}
+.number-step{display:grid;grid-template-columns:42px minmax(0,1fr) auto;gap:14px;padding:18px 0;border-bottom:1px solid #e3e7ed;align-items:start}
+.number-step:last-child{border-bottom:0}
+.step-no{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--topic-soft,#e7f6fb);color:var(--topic,var(--nu-blue));font:900 11px ui-monospace,monospace}
+.step-copy h3{margin:0;font:700 18px/1.2 Georgia,"Noto Serif TC",serif}.step-copy code{display:block;margin-top:8px;color:#4e5868;font:700 12px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere}.step-copy p{margin:7px 0 0;color:#697282;font-size:11px;line-height:1.55}
+.step-result{min-width:92px;padding:10px 11px;border-radius:12px;background:#edf8f1;color:var(--nu-green);font:900 12px/1.25 ui-monospace,monospace;text-align:center}
+.output-band{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:20px 26px;background:#0b1424;color:#fff}
+.output-band article{padding:13px;border:1px solid #2a3b55;border-radius:13px;background:#101d31}.output-band small{display:block;color:#9aaac0;font:850 8px/1.35 ui-monospace,monospace;letter-spacing:.1em}.output-band strong{display:block;margin-top:8px;color:#fff;font:850 clamp(15px,1.6vw,21px)/1.2 ui-monospace,monospace;overflow-wrap:anywhere}
+.nu-caution{margin:0;padding:17px 26px;border-top:1px solid #26364e;background:#0b1424;color:#b6c1d1;font-size:11px;line-height:1.65}.nu-caution b{color:#fdba74}
+@media(max-width:1050px){.nu-workbench{grid-template-columns:1fr}.math-model{position:relative;top:auto}.nu-hero{grid-template-columns:1fr}.nu-hero>p{max-width:760px}.input-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.nu-shell{padding:38px 14px 112px}.nu-hero{gap:22px;margin-bottom:20px}.nu-hero h1{font-size:clamp(42px,13.5vw,62px);line-height:1}.nu-hero>p{padding-left:14px;font-size:14px}.math-model,.nu-explain{border-radius:18px}.panel-head{padding:20px 18px 17px}.panel-head h2{font-size:29px}.panel-tag{font-size:8px}.model-flow{grid-template-columns:1fr;padding:16px 18px;gap:6px}.model-flow b{transform:rotate(90deg);line-height:1}.model-flow span{min-height:52px}.formula-list,.number-steps{padding-inline:18px}.formula-row{grid-template-columns:1fr;gap:5px}.formula-row span{padding-top:0}.formula-row code{font-size:14px}.symbol-note,.input-block,.output-band,.nu-caution{padding-inline:18px}.input-grid,.output-band{grid-template-columns:1fr}.number-step{grid-template-columns:38px minmax(0,1fr);gap:11px}.step-result{grid-column:2;justify-self:start;min-width:0}.output-band{gap:7px}.output-band article{min-height:70px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}

@@ -22,6 +22,7 @@
   const categoryMatch = relativePath.match(/^(0[1-6]_[^/]+)\/(?:index(?:-tc|-en)?\.html)?$/);
   const explicitEnglish = /(?:^|\/)index-en\.html$/.test(relativePath) || current.searchParams.get("lang") === "en";
   const language = explicitEnglish ? "en" : "tc";
+  document.documentElement.lang = language === "en" ? "en" : "zh-Hant";
 
   if (categoryMatch && !explicitEnglish && !relativePath.endsWith("index-tc.html")) {
     location.replace(new URL(`${categoryMatch[1]}/index-tc.html`, siteRoot));

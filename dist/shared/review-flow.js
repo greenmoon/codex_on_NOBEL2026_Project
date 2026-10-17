@@ -6,7 +6,7 @@
   const scriptUrl = new URL(script.src, location.href);
   const siteRoot = new URL("../", scriptUrl);
   const current = new URL(location.href);
-  const stationKeys = ["overview", "demo", "yt3", "book", "terms"];
+  const stationKeys = ["overview", "nu", "demo", "yt3", "book", "terms"];
 
   const awards = {
     "01_medicine": {
@@ -97,16 +97,16 @@
 
   const stationCopy = {
     tc: {
-      eyebrow: "AWARD REVIEW HUB · 獎項複習中心", title: "五站完成一個獎項", intro: "先掌握一句核心發現，再依序操作、觀看、閱讀與回想。完成狀態只儲存在這個裝置。", complete: "完成", pending: "待複習", progress: "複習進度", mark: "標記完成", undo: "✓ 已完成", open: "開啟專注頁 →", current: "本頁完成 →",
+      eyebrow: "AWARD REVIEW HUB · 獎項複習中心", title: "六站完成一個獎項", intro: "先掌握一句核心發現，再依序計算、操作、觀看、閱讀與回想。完成狀態只儲存在這個裝置。", complete: "完成", pending: "待複習", progress: "複習進度", mark: "標記完成", undo: "✓ 已完成", open: "開啟專注頁 →", current: "本頁完成 →",
       stations: {
-        overview: ["一分鐘摘要", "得主、獲獎理由與核心因果鏈。"], demo: ["互動 Demo", "用動態視覺、曲線和參數看見機制。"], yt3: ["YT3 三視角", "正式公布、主題解說與得主第一人稱。"], book: ["Book 閱讀", "用三個重要觀點連結著作與獎項。"], terms: ["Terms 回想", "掌握六個關鍵詞，再做三題快速檢查。"]
+        overview: ["一分鐘摘要", "得主、獲獎理由與核心因果鏈。"], nu: ["NU 數值解說", "左右同框核對數學模型與逐步代入。"], demo: ["互動 Demo", "用動態視覺、曲線和參數看見機制。"], yt3: ["YT3 三視角", "正式公布、主題解說與得主第一人稱。"], book: ["Book 閱讀", "用三個重要觀點連結著作與獎項。"], terms: ["Terms 回想", "掌握六個關鍵詞，再做三題快速檢查。"]
       },
       home: "HOME", award: "獎項中心", next: "下一站", bookKicker: "BOOK · FOCUSED STUDY", termsKicker: "TERMS · ACTIVE RECALL", bookIntro: "閱讀代表著作，理解獎項如何進入更完整的思想與實踐脈絡。", termsIntro: "不用背整頁文章；先準確說明六個詞，再用三題確認自己能否重建核心機制。", connection: "與獎項的連結", source: "核實來源", quick: "三題快速自我檢查", reveal: "點開查看答案", preview: "預覽三個重要觀點", focusedBook: "開啟 Book 專注頁 →", focusedTerms: "開啟 Terms 回想頁 →", created: "Kevin 製作 · 三層複習架構"
     },
     en: {
-      eyebrow: "AWARD REVIEW HUB", title: "Five stations complete one award", intro: "Capture the central finding, then interact, watch, read and recall. Completion stays on this device.", complete: "DONE", pending: "TO REVIEW", progress: "Review progress", mark: "Mark complete", undo: "✓ Completed", open: "Open focus page →", current: "Complete this page →",
+      eyebrow: "AWARD REVIEW HUB", title: "Six stations complete one award", intro: "Capture the central finding, then calculate, interact, watch, read and recall. Completion stays on this device.", complete: "DONE", pending: "TO REVIEW", progress: "Review progress", mark: "Mark complete", undo: "✓ Completed", open: "Open focus page →", current: "Complete this page →",
       stations: {
-        overview: ["One-minute overview", "Laureates, citation and the central causal chain."], demo: ["Interactive Demo", "See the mechanism through motion, plots and parameters."], yt3: ["YT3 three views", "Official announcement, explainer and first-person route."], book: ["Book reading", "Connect a representative work to the prize in three ideas."], terms: ["Terms recall", "Master six terms, then answer three quick checks."]
+        overview: ["One-minute overview", "Laureates, citation and the central causal chain."], nu: ["NU numeric explanation", "Check the model and each substituted number side by side."], demo: ["Interactive Demo", "See the mechanism through motion, plots and parameters."], yt3: ["YT3 three views", "Official announcement, explainer and first-person route."], book: ["Book reading", "Connect a representative work to the prize in three ideas."], terms: ["Terms recall", "Master six terms, then answer three quick checks."]
       },
       home: "HOME", award: "Award Hub", next: "Next station", bookKicker: "BOOK · FOCUSED STUDY", termsKicker: "TERMS · ACTIVE RECALL", bookIntro: "Read a representative work and connect the award to its wider intellectual and practical setting.", termsIntro: "Do not memorise a whole page. Explain six terms precisely, then rebuild the mechanism with three checks.", connection: "Connection to the prize", source: "Verified source", quick: "Three quick checks", reveal: "Open to reveal the answer", preview: "Preview three significant ideas", focusedBook: "Open focused Book page →", focusedTerms: "Open Terms recall page →", created: "Created by Kevin · Three-layer review"
     }
@@ -125,6 +125,7 @@
   const slug = relativePath.match(/^(0[1-6]_[^/]+)\//)?.[1] || "";
   const isHome = !relativePath || /^index(?:-tc|-en)?\.html$/.test(relativePath);
   const pageType = slug && (
+    /\/nu\/index\.html$/.test(relativePath) ? "nu" :
     /\/demo\/index\.html$/.test(relativePath) ? "demo" :
     /\/yt3\.html$/.test(relativePath) ? "yt3" :
     /\/book\.html$/.test(relativePath) ? "book" :
@@ -140,7 +141,7 @@
   function suffix(lang) { return lang === "en" ? "?lang=en" : ""; }
   function urlFor(award, station, lang) {
     const root = new URL(`${award}/`, siteRoot);
-    const routes = { overview: lang === "tc" ? "index-tc.html" : "index.html?lang=en", demo: `demo/${suffix(lang)}`, yt3: `yt3.html${suffix(lang)}`, book: `book.html${suffix(lang)}`, terms: `terms.html${suffix(lang)}` };
+    const routes = { overview: lang === "tc" ? "index-tc.html" : "index.html?lang=en", nu: `nu/${suffix(lang)}`, demo: `demo/${suffix(lang)}`, yt3: `yt3.html${suffix(lang)}`, book: `book.html${suffix(lang)}`, terms: `terms.html${suffix(lang)}` };
     return new URL(routes[station], root).href;
   }
   function homeUrl(lang) { return new URL(lang === "tc" ? "index.html" : "index-en.html", siteRoot).href; }
@@ -157,14 +158,14 @@
   function progressMarkup(award, lang) {
     const copy = stationCopy[lang];
     const n = countDone(award);
-    return `<div class="review-total-row"><span>${copy.progress}</span><strong data-review-progress="${award}">${n} / 5</strong></div><div class="award-review-track"><i data-review-fill="${award}" style="width:${n * 20}%"></i></div>`;
+    return `<div class="review-total-row"><span>${copy.progress}</span><strong data-review-progress="${award}">${n} / ${stationKeys.length}</strong></div><div class="award-review-track"><i data-review-fill="${award}" style="width:${n / stationKeys.length * 100}%"></i></div>`;
   }
 
   function refreshState() {
     Object.keys(awards).forEach((award) => {
       const n = countDone(award);
-      document.querySelectorAll(`[data-review-progress="${award}"]`).forEach((node) => { node.textContent = `${n} / 5`; });
-      document.querySelectorAll(`[data-review-fill="${award}"]`).forEach((node) => { node.style.width = `${n * 20}%`; });
+      document.querySelectorAll(`[data-review-progress="${award}"]`).forEach((node) => { node.textContent = `${n} / ${stationKeys.length}`; });
+      document.querySelectorAll(`[data-review-fill="${award}"]`).forEach((node) => { node.style.width = `${n / stationKeys.length * 100}%`; });
       stationKeys.forEach((station) => {
         const done = isDone(award, station);
         document.querySelectorAll(`[data-review-item="${award}:${station}"]`).forEach((node) => node.classList.toggle("done", done));
@@ -195,7 +196,7 @@
       const n = countDone(award);
       const meta = document.createElement("div");
       meta.className = "award-review-meta";
-      meta.innerHTML = `<div class="award-review-progress"><span>${copy.progress}</span><b data-review-progress="${award}">${n} / 5</b></div><div class="award-review-track"><i data-review-fill="${award}" style="width:${n * 20}%"></i></div><div class="award-module-chips">${stationKeys.map((station) => `<span data-review-item="${award}:${station}" class="${isDone(award, station) ? "done" : ""}">${copy.stations[station][0]}</span>`).join("")}</div>`;
+      meta.innerHTML = `<div class="award-review-progress"><span>${copy.progress}</span><b data-review-progress="${award}">${n} / ${stationKeys.length}</b></div><div class="award-review-track"><i data-review-fill="${award}" style="width:${n / stationKeys.length * 100}%"></i></div><div class="award-module-chips">${stationKeys.map((station) => `<span data-review-item="${award}:${station}" class="${isDone(award, station) ? "done" : ""}">${copy.stations[station][0]}</span>`).join("")}</div>`;
       const footer = card.querySelector("footer");
       if (footer) {
         card.insertBefore(meta, footer);
@@ -223,6 +224,23 @@
     section.className = "review-hub";
     section.innerHTML = `<div class="review-hub-inner"><div class="review-hub-head"><div><p class="kicker">${copy.eyebrow}</p><h2>${copy.title}</h2><p>${copy.intro}</p></div><div class="review-total">${progressMarkup(award, lang)}</div></div><div class="review-path-grid">${stationKeys.map((station, index) => stationCard(award, station, index, lang)).join("")}</div></div>`;
     hero.insertAdjacentElement("afterend", section);
+    const navDemo = [...document.querySelectorAll("header.site-nav nav a")].find((link) => /demo\/?(?:\?|$)/.test(link.getAttribute("href") || ""));
+    if (navDemo && !document.querySelector("header.site-nav nav a[data-nu-link]")) {
+      const nuLink = document.createElement("a");
+      nuLink.dataset.nuLink = "true";
+      nuLink.href = urlFor(award, "nu", lang);
+      nuLink.textContent = lang === "tc" ? "NU 數值解說" : "NU numeric";
+      navDemo.before(nuLink);
+    }
+    const heroDemo = [...hero.querySelectorAll(".topic-actions a")].find((link) => /demo\/?(?:\?|$)/.test(link.getAttribute("href") || ""));
+    if (heroDemo && !hero.querySelector(".topic-actions a[data-nu-link]")) {
+      const nuAction = document.createElement("a");
+      nuAction.className = "pill light";
+      nuAction.dataset.nuLink = "true";
+      nuAction.href = urlFor(award, "nu", lang);
+      nuAction.textContent = lang === "tc" ? "開啟 NU 數值解說" : "Open NU numeric explanation";
+      heroDemo.before(nuAction);
+    }
     bindToggles();
   }
 
