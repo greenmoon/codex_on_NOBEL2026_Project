@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>QA Digest Bilingual V41 2026-10-17 13:32</title>
+  <title>QA Digest Bilingual V42 2026-10-17 13:39</title>
   <style>
     :root { color-scheme: light; font-family: system-ui, sans-serif; }
     body { max-width: 980px; margin: 0 auto; padding: 2rem 1rem; line-height: 1.6; color: #101828; background: #ffffff; }
@@ -31,6 +31,19 @@
     <p class="language-key"><span>EN · English</span><span lang="zh-Hant">繁中 · Traditional Chinese</span></p>
   </header>
   <main>
+    <details>
+      <summary><span class="timetag">(042 2026-10-17 13:39)</span> <span class="question-label">Q:</span> Why could the published page still show the old Hall illustration after the photo replacement? / <span lang="zh-Hant">為何正式頁面在更換照片後仍可能顯示 Hall 的舊插畫？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How can the release guarantee that previously opened iPhones and desktop browsers fetch the new photograph immediately?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>The first photo release reused the existing <code>portrait.jpg</code> URL, so a browser with the former illustration cached could keep rendering that response even though the new file was deployed. V18 moves the Hoover Institution photograph to <code>portrait-hoover.jpg</code> and updates every HOME and laureate-page reference. The unique URL invalidates the stale cache path without depending on a manual refresh.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>如何保證曾開啟網站的 iPhone 與桌面瀏覽器會立即取得新真人照片？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>第一版沿用既有 <code>portrait.jpg</code> 網址，因此曾快取舊插畫的瀏覽器可能在新檔發布後仍顯示舊回應。V18 將 Hoover Institution 真人照片改為 <code>portrait-hoover.jpg</code>，並同步更新 HOME 與得主頁的所有引用；獨立新網址可直接避開舊快取，不必要求使用者手動重新整理。</dd>
+      </dl>
+    </details>
     <details>
       <summary><span class="timetag">(041 2026-10-17 13:32)</span> <span class="question-label">Q:</span> How can the Economic Sciences card replace its illustration with a clearer real photograph? / <span lang="zh-Hant">經濟學獎卡片如何以更清楚的真人照片取代插畫？</span></summary>
       <dl>
@@ -565,6 +578,6 @@
       </dl>
     </details>
   </main>
-  <footer>QA Digest Bilingual V41 2026-10-17 13:32 · 英文／繁中</footer>
+  <footer>QA Digest Bilingual V42 2026-10-17 13:39 · 英文／繁中</footer>
 </body>
 </html>
