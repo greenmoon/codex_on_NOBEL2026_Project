@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>QA Digest Bilingual V36 2026-10-17 07:13</title>
+  <title>QA Digest Bilingual V37 2026-10-17 09:51</title>
   <style>
     :root { color-scheme: light; font-family: system-ui, sans-serif; }
     body { max-width: 980px; margin: 0 auto; padding: 2rem 1rem; line-height: 1.6; color: #101828; background: #ffffff; }
@@ -31,6 +31,19 @@
     <p class="language-key"><span>EN · English</span><span lang="zh-Hant">繁中 · Traditional Chinese</span></p>
   </header>
   <main>
+    <details>
+      <summary><span class="timetag">(037 2026-10-17 09:51)</span> <span class="question-label">Q:</span> Why was Navi Pillay's portrait cut off on the HOME award card, and how was it fixed? / <span lang="zh-Hant">為何 HOME 的 Navi Pillay 人像遭到裁切，如何修正？</span></summary>
+      <dl>
+        <dt class="question-label">Q:</dt>
+        <dd>How can the Peace Prize card preserve the complete vertical portrait while keeping the shared card size and the other five award portraits unchanged?</dd>
+        <dt class="answer-label">A:</dt>
+        <dd>The source is a vertical portrait with rotation metadata, while the shared 4:3 image frame used <code>object-fit: cover</code>, which cropped its top and bottom. A Peace-card-only rule now uses <code>object-fit: contain</code> with a quiet matching background and disables hover zoom. The complete photo stays visible at desktop and phone widths without changing the other award cards.</dd>
+        <dt class="question-label" lang="zh-Hant">Q:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>如何在維持共用卡片尺寸、且不影響其他五個獎項照片的前提下，完整呈現和平獎的直向人像？</dd>
+        <dt class="answer-label" lang="zh-Hant">A:</dt>
+        <dd class="tc-line" lang="zh-Hant"><span class="tc-label">繁中：</span>來源檔是帶有旋轉資訊的直向人像，共用 4:3 圖框原本使用 <code>object-fit: cover</code>，因而裁掉上下部分。現在只針對和平獎卡片改用 <code>object-fit: contain</code>、加入安靜的同系背景，並停用 hover 放大；桌面與手機寬度都能看到完整照片，其他獎項卡片不受影響。</dd>
+      </dl>
+    </details>
     <details>
       <summary><span class="timetag">(036 2026-10-17 07:13)</span> <span class="question-label">Q:</span> How should the six Nobel awards be reorganised into a clear three-layer review system? / <span lang="zh-Hant">六個諾貝爾獎項應如何重整為清楚的三層複習系統？</span></summary>
       <dl>
@@ -500,6 +513,6 @@
       </dl>
     </details>
   </main>
-  <footer>QA Digest Bilingual V36 2026-10-17 07:13 · 英文／繁中</footer>
+  <footer>QA Digest Bilingual V37 2026-10-17 09:51 · 英文／繁中</footer>
 </body>
 </html>
